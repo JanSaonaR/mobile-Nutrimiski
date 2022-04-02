@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_nutrimiski/presenter/user_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 import '../../../model/dto/user_login_dto.dart';
 import '../../widgets/common/button.dart';
+import '../logged_in_view/app_page.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback goBack;
@@ -20,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   late bool loader;
-  bool isHiddenPassword = false;
+  bool isHiddenPassword = true;
 
   void _saveForm(Function open) {
     final isValid = _formKey.currentState!.validate();
@@ -156,10 +160,34 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(height: screenSize.height/20),
                         const Text('Olvidé mi contraseña', style: TextStyle(color: specialTextColor, fontSize: 12),),
                         SizedBox(height: screenSize.height/20),
-                        Button(
+                        Provider.of<UserPresenter>(context).getLoader() ?
+                        const SizedBox(
+                          width: 50,
+                          child: LinearProgressIndicator(color: Colors.white,),
+                        ): Button(
                           text: "INICIAR SESIÓN",
                           color: secondaryColor,
-                          press: () {},
+                          press: () {
+                            Provider.of<UserPresenter>(context, listen: false).setLoader(true);
+                            _formKey.currentState!.save();
+                            Provider.of<UserPresenter>(context, listen: false).loginUser(_toSend).then((value){
+                              if(value){
+                                Navigator.pushReplacement(
+                                    context,
+                                    PageTransition(
+                                        duration: const Duration(milliseconds: 200),
+                                        reverseDuration: const Duration(milliseconds: 200),
+                                        type: PageTransitionType.rightToLeft,
+                                        child: const AppPage()
+                                    )
+                                );
+                                Provider.of<UserPresenter>(context, listen: false).setLoader(true);
+                              }
+                              else{
+                                Provider.of<UserPresenter>(context, listen: false).setLoader(true);
+                              }
+                            });
+                          },
                         )
                       ],
                     ),

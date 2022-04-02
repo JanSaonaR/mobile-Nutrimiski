@@ -1,4 +1,4 @@
-class ParentRegisterDto{
+class NutritionistRegisterDto{
   final String firstName;
   final String lastName;
   final String dni;
@@ -7,8 +7,9 @@ class ParentRegisterDto{
   final String birthDate;
   final String phone;
   final String sex;
+  final String collegiate;
 
-  ParentRegisterDto(this.firstName, this.lastName, this.dni, this.email, this.password, this.birthDate, this.phone, this.sex);
+  NutritionistRegisterDto(this.firstName, this.lastName, this.dni, this.email, this.password, this.birthDate, this.phone, this.sex, this.collegiate);
 
   Map toJson() => {
     'firstName': firstName,
@@ -18,6 +19,7 @@ class ParentRegisterDto{
     'password' : password,
     'birthDate' : birthDate,
     'phone' : phone,
-    'sex' : sex
+    'sex' : sex,
+    'collegiate': collegiate
   };
 }

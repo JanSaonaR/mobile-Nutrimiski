@@ -1,12 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
+import 'package:mobile_nutrimiski/view/pages/authentication/register_form_rol_page.dart';
+import 'package:mobile_nutrimiski/view/pages/authentication/register_form_user_page.dart';
+import 'package:mobile_nutrimiski/view/pages/authentication/register_success_page.dart';
 import 'package:mobile_nutrimiski/view/pages/authentication/select_rol_page.dart';
 
 
 class GoToPage {
   static const int selectRol = 0;
-  static const int registerForm = 1;
+  static const int userRegisterForm = 1;
+  static const int rolRegisterForm = 2;
+  static const int registerSuccess = 3;
 }
 
 
@@ -37,15 +42,16 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
 
-    final screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
         backgroundColor: backgroundColor,
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
-            SelectRolPage(goToRegisterForm: () {})
+            SelectRolPage(goToUserRegisterForm: () { _switchPage(GoToPage.userRegisterForm); }),
+            UserRegisterFormPage(goToSelectRol: () { _switchPage(GoToPage.selectRol); }, goToRolRegisterForm: () { _switchPage(GoToPage.rolRegisterForm);} ),
+            RolRegisterFormPage(goToUserRegisterForm: () { _switchPage(GoToPage.userRegisterForm); }, goToRegisterSuccess: () { _switchPage(GoToPage.registerSuccess); },),
+            RegisterSuccessPage(goBack: (){ Navigator.pop(context); })
           ],
         )
     );
