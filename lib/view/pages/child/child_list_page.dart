@@ -29,42 +29,51 @@ class _ChildListPageState extends State<ChildListPage> {
 
     return SizedBox(
       height: screenSize.height,
-      child: Stack(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Lista de Hijos', style: TextStyle(color: primaryColor, fontSize: 18, fontWeight: FontWeight.bold),),
-          ListView.builder(
-            padding: EdgeInsets.zero,
-            itemCount: Provider.of<ChildPresenter>(context, listen: false).children.length,
-            itemBuilder: (BuildContext context, int index) {
+          Expanded(
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    itemCount: Provider.of<ChildPresenter>(context, listen: false).children.length,
+                    itemBuilder: (BuildContext context, int index) {
 
-              Child child = Provider.of<ChildPresenter>(context, listen: false).children[index];
+                      Child child = Provider.of<ChildPresenter>(context, listen: false).children[index];
 
-              return ChildListItemView(child: child,);
-            },
-          ),
-          Positioned(
-            bottom: 10,
-            right: 10,
-            child: FloatingActionButton(
-                child: const Center(
-                  child: Icon(
-                      Icons.person_add
+                      return ChildListItemView(child: child,);
+                    },
                   ),
                 ),
-                backgroundColor: primaryColor,
-                elevation: 1,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          duration: const Duration(milliseconds: 200),
-                          reverseDuration: const Duration(milliseconds: 200),
-                          type: PageTransitionType.rightToLeft,
-                          child: const ChildRegisterFormPage()
-                      )
-                  );
-                }),
-          )
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: FloatingActionButton(
+                      child: const Center(
+                        child: Icon(
+                            Icons.person_add
+                        ),
+                      ),
+                      backgroundColor: primaryColor,
+                      elevation: 1,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                duration: const Duration(milliseconds: 200),
+                                reverseDuration: const Duration(milliseconds: 200),
+                                type: PageTransitionType.rightToLeft,
+                                child: const ChildRegisterFormPage()
+                            )
+                        );
+                      }),
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );

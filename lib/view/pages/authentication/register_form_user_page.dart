@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_nutrimiski/presenter/register_presenter.dart';
@@ -28,6 +29,8 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
   late bool loader;
   bool isHiddenPassword = true;
   File? image;
+
+  String gender = "Hombre";
 
   final ButtonStyle style =
   ElevatedButton.styleFrom(
@@ -137,7 +140,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                                   await pickImage(ImageSource.gallery);
                                 },
                                 child: const Text(
-                                  'SeleccionarFoto',
+                                  'Seleccionar Foto',
                                   style: TextStyle(color: Colors.white),
                                 )
                             ),
@@ -184,7 +187,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                             },
                             onSaved: (value) {
                               Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.firstName = value!;
-                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('firstName', value!);
+                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('firstName', value);
                             },
                           ),
                         ),
@@ -225,7 +228,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                             },
                             onSaved: (value) {
                               Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.lastName = value!;
-                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('lastName', value!);
+                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('lastName', value);
                             },
                           ),
                         ),
@@ -266,49 +269,44 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                             },
                             onSaved: (value) {
                               Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.dni = value!;
-                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('dni', value!);
+                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('dni', value);
                             },
                           ),
                         ),
                         const SizedBox(height: 20.0),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          height: 50,
+                          width: 300,
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
                           decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(15.0)),
                               color: textFieldColor
                           ),
-                          width: 300,
-                          child: TextFormField(
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                height: 0.5
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              dropdownColor: textFieldColor,
+                              value: gender,
+                              icon: const Icon(Icons.arrow_forward_ios, size: 14.0, color: Color.fromRGBO(255, 255, 255, 0.3)),
+                              style: GoogleFonts.inter(color: Colors.white),
+                              onChanged: (String? newValue){
+                                setState((){
+                                  gender = newValue!;
+                                  if (gender == 'Hombre') {
+                                    Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.sex = "H";
+                                    Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('sex', "H");
+                                  } else {
+                                    Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.sex = "M";
+                                    Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('sex', "M");
+                                  }
+                                });
+                              },
+                              items: <String>['Hombre', 'Mujer'].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value, style: const TextStyle(color: Colors.white)),
+                                );
+                              }).toList(),
                             ),
-                            decoration: const InputDecoration(
-                              hintStyle: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.3)),
-                              hintText: 'Sexo',
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  width: 0,
-                                  style: BorderStyle.none,
-                                ),
-                              ),
-                            ),
-                            keyboardType: TextInputType.emailAddress,
-                            textInputAction: TextInputAction.next,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Ingrese su sexo";
-                              }
-                              // if (!value.contains("@")) {
-                              //   return "Ingrese un correo valido";
-                              // }
-                            },
-                            onSaved: (value) {
-                              Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.sex = value!;
-                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('sex', value!);
-                            },
                           ),
                         ),
                         const SizedBox(height: 20.0),

@@ -10,7 +10,7 @@ class ChildRegisterPresenter extends ChangeNotifier {
   final ParentService _parentService = ParentService();
   bool _loader = false;
   double _height = 0.0, _weight = 0.0;
-  final Map<String, dynamic> _childRegisterDto = ChildRegisterDto("", "", "", "", "", 0.0, 0.0, 0.0).toJson();
+  final Map<String, dynamic> _childRegisterDto = ChildRegisterDto("", "", "", "", "H", 0.0, 0.0, 0.0).toJson();
 
   getLoader(){
     return _loader;

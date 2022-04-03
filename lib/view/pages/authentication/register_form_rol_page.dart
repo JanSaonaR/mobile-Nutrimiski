@@ -111,7 +111,7 @@ class _RolRegisterFormPageState extends State<RolRegisterFormPage> {
                             },
                             onSaved: (value) {
                               Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.phone = value!;
-                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('phone', value!);
+                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('phone', value);
                             },
                           ),
                         ),
@@ -152,7 +152,7 @@ class _RolRegisterFormPageState extends State<RolRegisterFormPage> {
                             },
                             onSaved: (value) {
                               Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.email = value!;
-                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('email', value!);
+                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('email', value);
                             },
                           ),
                         ),
@@ -171,6 +171,8 @@ class _RolRegisterFormPageState extends State<RolRegisterFormPage> {
                               height: 0.5,
                             ),
                             decoration: InputDecoration(
+                              hintText: 'Contraseña',
+                                hintStyle: const TextStyle(color: Color.fromRGBO(255, 255, 255, 0.3)),
                                 border: const OutlineInputBorder(
                                   borderSide: BorderSide(
                                     width: 0,
@@ -185,7 +187,7 @@ class _RolRegisterFormPageState extends State<RolRegisterFormPage> {
                                 )),
                             onSaved: (value) {
                               Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.password = value!;
-                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('password', value!);
+                              Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('password', value);
                             },
                             obscureText: isHiddenPassword,
                             textInputAction: TextInputAction.done,

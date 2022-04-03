@@ -6,6 +6,9 @@ import '../model/entitie/child.dart';
 class ChildPresenter extends ChangeNotifier {
 
   final ParentService _parentService = ParentService();
+
+  late Child selectedChild;
+
   late List<Child> children = [];
   bool _loader = false;
   bool childrenReady = false;

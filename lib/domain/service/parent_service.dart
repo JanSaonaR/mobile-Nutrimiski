@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:mobile_nutrimiski/model/entitie/parent_child.dart';
 import 'package:mobile_nutrimiski/util/connection_tags.dart';
 
 import '../../model/entitie/child.dart';
@@ -38,19 +39,26 @@ class ParentService{
   }
 
   Future<bool> registerChild(Map<String, dynamic> child) async {
-    final dio = Dio();
-
-    // FormData formData = FormData.fromMap(child);
+    // final dio = Dio();
     //
-    // String fileName = file.path.split('/').last;
+    // dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
     //
-    // formData.files.add(MapEntry('profilePic', await MultipartFile.fromFile(file.path, filename:fileName)));
+    // var uri = baseUrl + parentEndpoint + childRegister;
     //
-    dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
+    // var response = await dio.post(uri, data: child, queryParameters: {'parentId' : UserSession().getId()});
 
-    var uri = baseUrl + parentEndpoint + childRegister;
+    String dataEncoded = json.encode(child);
 
-    var response = await dio.post(uri, data: child, queryParameters: {'parentId' : UserSession().getId()});
+    MultipartField mf = MultipartField(dataEncoded, headers: {
+      Headers.contentTypeHeader : "application/json",
+    });
+
+    var uri = Uri.parse(baseUrl + parentEndpoint + childRegister);
+    var req = MultipartRequestEx('POST', uri)
+      ..fields["request"] = mf;
+      // ..files.add(await http.MultipartFile.fromPath('profilePic', '', contentType: MediaType('application', 'x-tar')));
+
+    var response = await req.send();
 
     if(response.statusCode == 201) {
       return true;
@@ -66,9 +74,35 @@ class ParentService{
 
     var response = await dio.get(uri, queryParameters: {'parentId' : UserSession().getId()});
 
+
+
     if(response.statusCode == 200) {
-      List aux = response.data.map((e) => Child.fromJson(e)).toList();
-      return aux.cast<Child>();
+
+      List<Child> childList = [];
+
+      for(Map<String, dynamic> element in response.data) {
+        Child child = Child(
+          childId: element["childId"],
+          firstName: element["firstName"],
+          lastName: element["lastName"],
+          dni: element["dni"],
+          height: element["height"],
+          weight: element["weight"],
+          sex: element["sex"],
+          birthDate: element["birthDate"],
+          imc: element["imc"],
+          age: element["age"],
+          parent: ParentChild.fromJson(element["parent"])
+        );
+
+        childList.add(child);
+
+      }
+
+      //List aux = response.data.map((e) => Child.fromJson(e)).toList();
+
+
+      return childList;
     }
     return [];
   }
