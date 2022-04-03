@@ -17,6 +17,13 @@ class UserService{
     var response = await dio.post(uri, data: user.toJson());
 
     if (response.statusCode == 200) {
+
+      if(response.data['data']['profile']['user']['rol'] == 'P'){
+        UserSession().userLogin(response.data['data']['profile']['parentId'], response.headers.value('Token')!, response.data['data']['profile']['user']['firstName'],
+            response.data['data']['profile']['user']['lastName'], response.data['data']['profile']['user']['email'], response.data['data']['profile']['user']['rol'],
+            response.data['data']['profile']['user']['picture']['url']);
+      }
+      
       return true;
     }
     return false;

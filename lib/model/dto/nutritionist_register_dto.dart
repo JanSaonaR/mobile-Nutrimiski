@@ -11,7 +11,7 @@ class NutritionistRegisterDto{
 
   NutritionistRegisterDto(this.firstName, this.lastName, this.dni, this.email, this.password, this.birthDate, this.phone, this.sex, this.collegiate);
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
     'firstName': firstName,
     'lastName': lastName,
     'dni' : dni,

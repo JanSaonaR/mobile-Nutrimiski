@@ -1,3 +1,5 @@
+import 'package:mobile_nutrimiski/model/entitie/parent_child.dart';
+
 class Child {
   final int? childId;
   final String? firstName;
@@ -9,9 +11,10 @@ class Child {
   final String? birthDate;
   final double? imc;
   final int? age;
+  final ParentChild? parent;
 
   Child({this.childId, this.firstName, this.lastName, this.dni, this.height, this.weight, this.sex,
-    this.birthDate, this.imc, this.age});
+    this.birthDate, this.imc, this.age, this.parent});
 
   factory Child.fromJson(dynamic json) {
 
@@ -27,6 +30,7 @@ class Child {
       birthDate: childJson['birthDate'],
       imc: childJson['imc'],
       age: childJson['age'],
+      parent: ParentChild.fromJson(childJson['parent'])
     );
   }
 }

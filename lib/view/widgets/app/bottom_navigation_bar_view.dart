@@ -37,7 +37,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             icon: const FaIcon(FontAwesomeIcons.facebookMessenger),
           ),
           buildAppBarItem(
-            index: 3,
+            index: 2,
             icon: const FaIcon(FontAwesomeIcons.child),
           ),
         ],

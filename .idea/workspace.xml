@@ -10,30 +10,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/domain/service/user_service.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/dto/nutritionist_register_dto.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presenter/user_presenter.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/provider/bottom_navigation_bar_provider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_user_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_success_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/widgets/app/bottom_navigation_bar_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/dto/child_register_dto.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/dto/register_dto.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/entitie/parent_child.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/entitie/picture.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presenter/child_presenter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presenter/child_register_presenter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/util/styles.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/util/util.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/pages/main/home_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widgets/app/navigation_drawer_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widgets/child/child_list_item_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/domain/service/nutritionist_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/nutritionist_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/domain/service/parent_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/parent_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/service/user_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/user_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/dto/nutritionist_register_dto.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/dto/nutritionist_register_dto.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/dto/parent_register_dto.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/dto/parent_register_dto.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/entitie/child.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/child.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/entitie/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/entitie/user_session.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/user_session.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/colors.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/connection_tags.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/connection_tags.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/select_rol_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/select_rol_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/logged_in_view/app_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/logged_in_view/app_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_user_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/child_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/child_list_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/register_child_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/register_child_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/logged_in_view/app_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/logged_in_view/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/multipart_register_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widgets/app/bottom_navigation_bar_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widgets/app/bottom_navigation_bar_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,16 +122,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/domain/service/user_service.dart</url>
-          <line>16</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

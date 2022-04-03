@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_nutrimiski/presenter/register_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
@@ -24,6 +27,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
 
   late bool loader;
   bool isHiddenPassword = true;
+  File? image;
 
   final ButtonStyle style =
   ElevatedButton.styleFrom(
@@ -35,6 +39,15 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
       textStyle: const TextStyle(fontSize: 15)
   );
+
+  Future pickImage(ImageSource source) async {
+    final image = await ImagePicker().pickImage(source: source);
+    if (image == null) return;
+
+    final _temp = File(image.path);
+    Provider.of<RegisterPresenter>(context, listen: false).setFile(_temp);
+    setState(() => this.image = _temp);
+  }
 
   Future<void> selectBirthDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -60,7 +73,8 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
         lastDate: DateTime(2025));
     if (picked != null && picked != _startDate) {
       setState(() {
-        Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('birthDate', DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(picked));
+        Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.birthDate = DateFormat("yyyy-MM-dd").format(picked);
+        Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('birthDate', DateFormat("yyyy-MM-dd").format(picked));
         _birthDayController.text = DateFormat('dd/MM/yyyy').format(picked);
       });
     }
@@ -119,14 +133,16 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                           children: [
                             ElevatedButton(
                                 style: style,
-                                onPressed: () {},
+                                onPressed: () async{
+                                  await pickImage(ImageSource.gallery);
+                                },
                                 child: const Text(
                                   'SeleccionarFoto',
                                   style: TextStyle(color: Colors.white),
                                 )
                             ),
                             CircleAvatar(
-                              backgroundImage: Provider.of<RegisterPresenter>(context).getImage(),
+                              backgroundImage: image == null ? Provider.of<RegisterPresenter>(context).getImage() : FileImage(image!),
                               radius: 60,
                             )
                           ],
@@ -167,6 +183,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                               // }
                             },
                             onSaved: (value) {
+                              Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.firstName = value!;
                               Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('firstName', value!);
                             },
                           ),
@@ -207,6 +224,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                               // }
                             },
                             onSaved: (value) {
+                              Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.lastName = value!;
                               Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('lastName', value!);
                             },
                           ),
@@ -247,6 +265,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                               // }
                             },
                             onSaved: (value) {
+                              Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.dni = value!;
                               Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('dni', value!);
                             },
                           ),
@@ -287,6 +306,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                               // }
                             },
                             onSaved: (value) {
+                              Provider.of<RegisterPresenter>(context, listen: false).parentRegisterDto.sex = value!;
                               Provider.of<RegisterPresenter>(context, listen: false).setUserRegisterDto('sex', value!);
                             },
                           ),

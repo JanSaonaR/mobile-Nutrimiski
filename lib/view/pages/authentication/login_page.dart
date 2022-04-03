@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../model/dto/user_login_dto.dart';
 import '../../widgets/common/button.dart';
-import '../logged_in_view/app_page.dart';
+import '../main/app_page.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback goBack;
@@ -26,13 +26,6 @@ class _LoginPageState extends State<LoginPage> {
   late bool loader;
   bool isHiddenPassword = true;
 
-  void _saveForm(Function open) {
-    final isValid = _formKey.currentState!.validate();
-    if (isValid) {
-      _formKey.currentState!.save();
-
-    }
-  }
 
   void _togglePassword() {
     isHiddenPassword = !isHiddenPassword;
@@ -181,10 +174,10 @@ class _LoginPageState extends State<LoginPage> {
                                         child: const AppPage()
                                     )
                                 );
-                                Provider.of<UserPresenter>(context, listen: false).setLoader(true);
+                                Provider.of<UserPresenter>(context, listen: false).setLoader(false);
                               }
                               else{
-                                Provider.of<UserPresenter>(context, listen: false).setLoader(true);
+                                Provider.of<UserPresenter>(context, listen: false).setLoader(false);
                               }
                             });
                           },

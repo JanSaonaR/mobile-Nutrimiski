@@ -1,18 +1,23 @@
 
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:mobile_nutrimiski/domain/service/nutritionist_service.dart';
 import 'package:mobile_nutrimiski/domain/service/parent_service.dart';
 import 'package:mobile_nutrimiski/model/dto/parent_register_dto.dart';
 
 import '../model/dto/nutritionist_register_dto.dart';
+import '../model/dto/register_dto.dart';
 
 class RegisterPresenter extends ChangeNotifier{
 
   AssetImage _image = const AssetImage("assets/images/parent.jpg");
-  Map<dynamic, dynamic> _parentRegisterDto = ParentRegisterDto("", "", "", "", "", "", "", "").toJson();
-  Map<dynamic, dynamic> _nutritionistRegisterDto = NutritionistRegisterDto("", "", "", "", "", "", "", "", "").toJson();
+  final Map<String, dynamic> _parentRegisterDto = ParentRegisterDto("", "", "", "", "", "", "", "").toJson();
+  final ParentRegisterDto parentRegisterDto = ParentRegisterDto("", "", "", "", "", "", "", "");
+  final Map<String, dynamic> _nutritionistRegisterDto = NutritionistRegisterDto("", "", "", "", "", "", "", "", "").toJson();
   final ParentService _parentService = ParentService();
   final NutritionistService _nutritionistService = NutritionistService();
+  late File _file;
   bool _loader = false;
 
   int _rol = 0;
@@ -23,6 +28,10 @@ class RegisterPresenter extends ChangeNotifier{
 
   getRol(){
     return _rol;
+  }
+
+  setFile(File file){
+    _file = file;
   }
 
   getLoader(){
@@ -60,10 +69,11 @@ class RegisterPresenter extends ChangeNotifier{
 
   Future<bool> registerUser() async {
     if(_rol == 0){
-      return await _parentService.registerParent(_parentRegisterDto);
+      Map<String, dynamic> registerDto = RegisterDto(_parentRegisterDto).toJson();
+      return await _parentService.registerParent(_parentRegisterDto, _file);
     }
     else{
-      return await _nutritionistService.registerNutritionist(_nutritionistRegisterDto);
+      return await _nutritionistService.registerNutritionist(_nutritionistRegisterDto, _file);
     }
   }
 

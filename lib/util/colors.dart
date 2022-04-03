@@ -11,3 +11,5 @@ const Color unSelectedRol = Color(0xFF83655F);
 const Color textFieldColor = Color(0xFF495570);
 
 const Color specialTextColor = Color(0xFFBDBDBD);
+
+const Color alternativeTextColor = Color(0xFF929292);
