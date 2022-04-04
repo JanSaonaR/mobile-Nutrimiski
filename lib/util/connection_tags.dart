@@ -1,17 +1,33 @@
 
+//----------- BASE URL -----------//
+
 const String baseUrl = "https://nutrimiski-backend-jan.herokuapp.com/";
+
+//----------- USER -----------//
 
 const String userEndpoint = "user/";
 
 const String userLogin = "login";
 
-const String parentRegister = "register/parent";
+//----------- PARENT -----------//
 
-const String nutritionistRegister = "register/nutritionist";
+const String parentRegister = "register/parent";
 
 const String parentEndpoint = "parent/";
 
-const String childRegister = "registerChild";
+//----------- NUTRITIONIST -----------//
+
+const String nutritionistRegister = "register/nutritionist";
+
+//----------- CHILD -----------//
 
 const String getChildren = "children";
+
+const String childRegister = "registerChild";
+
+//----------- MEAL -----------//
+
+const String mealEndpoint = "meal/";
+
+const String getMealsByDayEndpoint = "getMealsByDay";
 
