@@ -11,7 +11,7 @@ const String nutritionistRegister = "register/nutritionist";
 
 const String parentEndpoint = "parent/";
 
-const String childRegister = "child";
+const String childRegister = "registerChild";
 
 const String getChildren = "children";
 

@@ -9,13 +9,16 @@ class UserSession{
     return _singleton;
   }
 
-  userLogin(int id, String token, String firstName, String lastName, String email, String rol, String userImage){
+  userLogin(int id, String token, String firstName, String lastName, String email, String rol){
     _id = id;
     _token = token;
     _firstName = firstName;
     _lastName = lastName;
     _email = email;
     _rol = rol;
+  }
+
+  setUserImage(String userImage){
     _userImage = userImage;
   }
 

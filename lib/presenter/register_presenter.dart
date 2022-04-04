@@ -12,9 +12,9 @@ import '../model/dto/register_dto.dart';
 class RegisterPresenter extends ChangeNotifier{
 
   AssetImage _image = const AssetImage("assets/images/parent.jpg");
-  final Map<String, dynamic> _parentRegisterDto = ParentRegisterDto("", "", "", "", "", "", "", "").toJson();
+  final Map<String, dynamic> _parentRegisterDto = ParentRegisterDto("", "", "", "", "", "", "", "H").toJson();
   final ParentRegisterDto parentRegisterDto = ParentRegisterDto("", "", "", "", "", "", "", "");
-  final Map<String, dynamic> _nutritionistRegisterDto = NutritionistRegisterDto("", "", "", "", "", "", "", "", "").toJson();
+  final Map<String, dynamic> _nutritionistRegisterDto = NutritionistRegisterDto("", "", "", "", "", "", "", "H", "").toJson();
   final ParentService _parentService = ParentService();
   final NutritionistService _nutritionistService = NutritionistService();
   late File _file;

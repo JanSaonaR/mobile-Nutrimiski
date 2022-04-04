@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_nutrimiski/model/entitie/child.dart';
+import 'package:mobile_nutrimiski/view/pages/child/child_detail_page.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
+import '../../../presenter/child_presenter.dart';
 import '../../../util/colors.dart';
 
 class ChildListItemView extends StatefulWidget {
@@ -18,7 +22,17 @@ class _ChildListItemViewState extends State<ChildListItemView> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
+        //dejo un niño seleccionado para evitar pasar el mismo child como parámetro
+        Provider.of<ChildPresenter>(context, listen: false).selectedChild = widget.child;
+        Navigator.push(
+            context,
+            PageTransition(
+                duration: const Duration(milliseconds: 200),
+                reverseDuration: const Duration(milliseconds: 200),
+                type: PageTransitionType.rightToLeft,
+                child: const ChildDetailsPage()
+            )
+        );
       },
       child: Container(
         decoration: BoxDecoration(
