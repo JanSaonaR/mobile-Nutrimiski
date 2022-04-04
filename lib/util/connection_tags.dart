@@ -31,3 +31,5 @@ const String mealEndpoint = "meal/";
 
 const String getMealsByDayEndpoint = "getMealsByDay";
 
+const String getMealsBetweenDatesEndpoint = "betweenDates";
+

@@ -9,7 +9,11 @@ class MealPresenter extends ChangeNotifier {
 
   late List<Meal> mealsByDay = [];
 
+  late List<Meal> mealsBetweenDates = [];
+
   bool mealsByDayReady = false;
+
+  bool mealsBetweenDatesReady = false;
 
   Future<bool> getMealsByDay(BuildContext context, String date) async {
     await _mealService.getMealsByDay(context, date).then((value){
@@ -22,6 +26,19 @@ class MealPresenter extends ChangeNotifier {
     });
 
     return mealsByDayReady;
+  }
+
+  Future<bool> getMealsBetweenDates(BuildContext context, String startDate, String endDate) async {
+    await _mealService.getMealsBetweenDates(context, startDate, endDate).then((value){
+      mealsBetweenDates = value;
+
+      if(mealsBetweenDates.isNotEmpty) {
+        mealsBetweenDatesReady = true;
+      }
+
+    });
+
+    return mealsBetweenDatesReady;
   }
 
 }

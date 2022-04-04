@@ -31,14 +31,37 @@ class MealService {
 
     if(response.statusCode == 200) {
       List<Meal> mealList = [];
-
       mealList = response.data.map((e) => Meal.fromJson(e)).toList();
-
       return mealList;
     }
 
     return [];
+  }
 
+  Future<List<Meal>> getMealsBetweenDates(BuildContext context, String startDate, String endDate) async {
+    final dio = Dio();
+
+    Child child = Provider.of<ChildPresenter>(context, listen: false).selectedChild;
+
+    dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
+
+    var uri = baseUrl + mealEndpoint + getMealsBetweenDatesEndpoint;
+
+    var response = await dio.get(uri,
+      queryParameters: {
+        'childId': child.childId,
+        'endDate': endDate,
+        'startDate': startDate
+      }
+    );
+
+    if(response.statusCode == 200) {
+      List<Meal> mealList = [];
+      mealList = response.data.map((e) => Meal.fromJson(e)).toList();
+      return mealList;
+    }
+
+    return [];
   }
 
 }
