@@ -39,23 +39,20 @@ class ParentService{
   }
 
   Future<bool> registerChild(Map<String, dynamic> child) async {
-    // final dio = Dio();
-    //
-    // dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
-    //
-    // var uri = baseUrl + parentEndpoint + childRegister;
-    //
-    // var response = await dio.post(uri, data: child, queryParameters: {'parentId' : UserSession().getId()});
 
     String dataEncoded = json.encode(child);
 
+    var userToken =  UserSession().getToken();
+
     MultipartField mf = MultipartField(dataEncoded, headers: {
-      Headers.contentTypeHeader : "application/json",
+      Headers.contentTypeHeader : Headers.jsonContentType,
+      "Authorization": "Bearer $userToken"
     });
 
-    var uri = Uri.parse(baseUrl + parentEndpoint + childRegister);
+    var uri = Uri.parse(baseUrl + parentEndpoint + childRegister + '?parentId=' + UserSession().getId().toString());
     var req = MultipartRequestEx('POST', uri)
-      ..fields["request"] = mf;
+      ..fields["request"] = mf
+      ..headers["Authorization"] = "Bearer $userToken";
       // ..files.add(await http.MultipartFile.fromPath('profilePic', '', contentType: MediaType('application', 'x-tar')));
 
     var response = await req.send();
