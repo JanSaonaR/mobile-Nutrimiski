@@ -9,6 +9,10 @@ class UserSession{
     return _singleton;
   }
 
+  logOut(){
+    _userImage = "";
+  }
+
   userLogin(int id, String token, String firstName, String lastName, String email, String rol){
     _id = id;
     _token = token;
@@ -28,7 +32,7 @@ class UserSession{
   String getEmail() { return _email!; }
   String getToken() { return _token!; }
   String getRol(){ return _rol!; }
-  String getImage() { return _userImage!; }
+  String? getImage() { return _userImage; }
 
   UserSession._internal();
 

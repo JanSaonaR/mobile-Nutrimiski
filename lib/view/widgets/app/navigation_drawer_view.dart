@@ -38,10 +38,15 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(
                         Radius.circular(15.0)),
-                    image: DecorationImage(
-                      image: NetworkImage(UserSession().getImage()),
+                    image: UserSession().getImage() != null ?
+                    DecorationImage(
+                      image:  NetworkImage(UserSession().getImage()!),
                       fit: BoxFit.cover,
-                    ),
+                    ) :
+                    const DecorationImage(
+                      image: AssetImage("assets/images/dad.png"),
+                      fit: BoxFit.cover,
+                    )
                   ),
                 ),
                 const SizedBox(
@@ -64,6 +69,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   onPrimary: textFieldColor
                 ),
                 onPressed: (){
+                  UserSession().logOut();
                   Navigator.pushReplacement(
                       context,
                       PageTransition(

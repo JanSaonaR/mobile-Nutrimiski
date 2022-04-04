@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
 import 'package:mobile_nutrimiski/view/pages/authentication/register_page.dart';
@@ -60,7 +61,6 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
               decoration: const BoxDecoration(
                   color: Color.fromRGBO(44, 53, 73, 0.8)
               ),
-              height: screenSize.height,
               width: screenSize.width,
               child: Stack(
                 alignment: Alignment.center,
@@ -71,52 +71,52 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                   ),
                   Positioned(
                     top: 300, left: 20, right: 20, bottom: 100,
-                    child: SizedBox(
-                      height: screenSize.height,
-                      width: screenSize.width,
-                      child: Column(
-                        children: [
-                          Text('BIENVENIDO A', style: TextStyle(color: Colors.white, fontSize: screenSize.width/10, fontWeight: FontWeight.bold),),
-                          Text('NUTRIMIKUY', style: TextStyle(color: Colors.white, fontSize: screenSize.width/9, fontWeight: FontWeight.bold),),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          SizedBox(
-                            width: screenSize.width/1.2,
-                            child: const Text('Una aplicación donde podrás tener     recomendaciones de alimentos y platos saludables.',
-                              style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
-                          ),
-                          const SizedBox(
-                            height: 100.0,
-                          ),
-                          Button(
-                              text: "INICIAR SESIÓN",
-                              color: secondaryColor,
-                              press: () {
-                                _switchPage(GoToPage.login);
-                              }
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          Button(
-                              text: "REGISTRARSE",
-                              color: primaryColor,
-                              press: () {
-                                Navigator.push(
-                                    context,
-                                    PageTransition(
-                                        duration: const Duration(milliseconds: 200),
-                                        reverseDuration: const Duration(milliseconds: 200),
-                                        type: PageTransitionType.rightToLeft,
-                                        child: const RegisterPage()
-                                    )
-                                );
-                              }
-                          ),
-                          // const RegisterButton(),
-                        ],
-                      ),
+                    child: ListView(
+                      children: [
+                        Column(
+                          children: [
+                            Text('BIENVENIDO A', style: TextStyle(color: Colors.white, fontSize: screenSize.width/10, fontWeight: FontWeight.bold),),
+                            Text('NUTRIMIKUY', style: TextStyle(color: Colors.white, fontSize: screenSize.width/9, fontWeight: FontWeight.bold),),
+                            const SizedBox(
+                              height: 20.0,
+                            ),
+                            SizedBox(
+                              width: screenSize.width/1.2,
+                              child: const Text('Una aplicación donde podrás tener     recomendaciones de alimentos y platos saludables.',
+                                style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
+                            ),
+                            const SizedBox(
+                              height: 100.0,
+                            ),
+                            Button(
+                                text: "INICIAR SESIÓN",
+                                color: secondaryColor,
+                                press: () {
+                                  _switchPage(GoToPage.login);
+                                }
+                            ),
+                            const SizedBox(
+                              height: 20.0,
+                            ),
+                            Button(
+                                text: "REGISTRARSE",
+                                color: primaryColor,
+                                press: () {
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                          duration: const Duration(milliseconds: 200),
+                                          reverseDuration: const Duration(milliseconds: 200),
+                                          type: PageTransitionType.rightToLeft,
+                                          child: const RegisterPage()
+                                      )
+                                  );
+                                }
+                            ),
+                            // const RegisterButton(),
+                          ],
+                        ),
+                      ]
                     ),
                   ),
                 ],

@@ -56,7 +56,6 @@ class _SelectRolPageState extends State<SelectRolPage> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 150, bottom: 50, left: 30, right: 30),
-              height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -71,10 +70,9 @@ class _SelectRolPageState extends State<SelectRolPage> {
                   color: Color.fromRGBO(44, 53, 73, 0.95),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
-                height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: ListView(
+                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CircleAvatar(
                       radius: 100,
@@ -94,7 +92,7 @@ class _SelectRolPageState extends State<SelectRolPage> {
                         Provider.of<RegisterPresenter>(context, listen: false).setDesireRol(0);
                       },
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     Button(
                       text: "NUTRICIONISTA",
                       color: Provider.of<RegisterPresenter>(context).getRol() == 1 ? secondaryColor : unSelectedRol,
@@ -102,7 +100,7 @@ class _SelectRolPageState extends State<SelectRolPage> {
                         Provider.of<RegisterPresenter>(context, listen: false).setDesireRol(1);
                       },
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 50),
                     InkWell(
                       onTap: widget.goToUserRegisterForm,
                       child: Row(

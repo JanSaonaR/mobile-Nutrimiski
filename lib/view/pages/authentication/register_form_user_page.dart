@@ -275,7 +275,6 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                         ),
                         const SizedBox(height: 20.0),
                         Container(
-                          height: 50,
                           width: 300,
                           padding: const EdgeInsets.symmetric(horizontal: 15.0),
                           decoration: const BoxDecoration(

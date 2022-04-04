@@ -52,8 +52,12 @@ class _ChildListItemViewState extends State<ChildListItemView> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            widget.child.sex.toString() == "H" ?
             const CircleAvatar(
-              backgroundImage: AssetImage("assets/images/parent.jpg"),
+              backgroundImage: AssetImage("assets/images/boy.png"),
+              radius: 60,
+            ) : const CircleAvatar(
+              backgroundImage: AssetImage("assets/images/girl.png"),
               radius: 60,
             ),
             Column(
