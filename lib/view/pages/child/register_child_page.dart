@@ -5,6 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:mobile_nutrimiski/model/dto/child_register_dto.dart';
 import 'package:mobile_nutrimiski/presenter/register_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
+import 'package:mobile_nutrimiski/view/pages/child/register_child_preferences_page.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '../../../presenter/child_register_presenter.dart';
@@ -404,17 +406,26 @@ class _ChildRegisterFormPageState extends State<ChildRegisterFormPage> {
                             child: LinearProgressIndicator(color: Colors.white,),
                           )
                           : Button(
-                            text: "REGISTRAR",
+                            text: "CONTINUAR",
                             color: secondaryColor,
                             press: (){
                               final isValid = _formKey.currentState!.validate();
                               if (isValid) {
                                 _formKey.currentState!.save();
+
                                 Provider.of<ChildRegisterPresenter>(context, listen: false).setLoader(true);
-                                Provider.of<ChildRegisterPresenter>(context, listen: false).registerChild().then((value){
+                                Provider.of<ChildRegisterPresenter>(context, listen: false).registerChild(context).then((value){
                                   if(value){
                                     Provider.of<ChildRegisterPresenter>(context, listen: false).setLoader(false);
-                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            duration: const Duration(milliseconds: 200),
+                                            reverseDuration: const Duration(milliseconds: 200),
+                                            type: PageTransitionType.rightToLeft,
+                                            child: const RegisterChildPreferencesPage()
+                                        )
+                                    );
                                   }
                                   else{
                                     Provider.of<ChildRegisterPresenter>(context, listen: false).setLoader(false);

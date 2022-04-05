@@ -25,6 +25,12 @@ const String getChildren = "children";
 
 const String childRegister = "registerChild";
 
+const String childPreferencesEndpoint = "childPreferences";
+
+const String childPreferencesSave = "/save";
+
+const String childPreferencesDelete = "/delete";
+
 //----------- MEAL -----------//
 
 const String mealEndpoint = "meal/";

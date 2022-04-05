@@ -10,7 +10,15 @@ class ChildRegisterPresenter extends ChangeNotifier {
   final ParentService _parentService = ParentService();
   bool _loader = false;
   double _height = 0.0, _weight = 0.0;
+
+  late int _registeredChildId;
+
   final Map<String, dynamic> _childRegisterDto = ChildRegisterDto("", "", "", "", "H", 0.0, 0.0, 0.0).toJson();
+
+
+  setRegisteredChildId(int id) => _registeredChildId = id;
+
+  getRegisteredChildId() => _registeredChildId;
 
   getLoader(){
     return _loader;
@@ -33,12 +41,13 @@ class ChildRegisterPresenter extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> registerChild() async{
+  Future<bool> registerChild(BuildContext context) async{
     double imc = _weight/pow((_height/100), 2);
     _childRegisterDto['height'] = _height;
     _childRegisterDto['weight'] = _weight;
     _childRegisterDto['imc'] = imc;
-    return await _parentService.registerChild(_childRegisterDto);
+
+    return await _parentService.registerChild(context, _childRegisterDto);
   }
 
 }

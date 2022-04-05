@@ -2,11 +2,15 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:mobile_nutrimiski/model/entitie/parent_child.dart';
+import 'package:mobile_nutrimiski/presenter/child_register_presenter.dart';
 import 'package:mobile_nutrimiski/util/connection_tags.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../model/entitie/child.dart';
 import '../../model/entitie/user_session.dart';
@@ -38,7 +42,7 @@ class ParentService{
     return false;
   }
 
-  Future<bool> registerChild(Map<String, dynamic> child) async {
+  Future<bool> registerChild(BuildContext context, Map<String, dynamic> child) async {
 
     String dataEncoded = json.encode(child);
 
@@ -57,7 +61,13 @@ class ParentService{
 
     var response = await req.send();
 
+    var responseString = await response.stream.bytesToString();
+
+    final decodedMap = json.decode(responseString);
+
     if(response.statusCode == 201) {
+       await Provider.of<ChildRegisterPresenter>(context, listen: false)
+          .setRegisteredChildId(decodedMap['data']['childId']);
       return true;
     }
     return false;
@@ -70,8 +80,6 @@ class ParentService{
     var uri = baseUrl + parentEndpoint + getChildren;
 
     var response = await dio.get(uri, queryParameters: {'parentId' : UserSession().getId()});
-
-
 
     if(response.statusCode == 200) {
 

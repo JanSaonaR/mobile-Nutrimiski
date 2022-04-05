@@ -133,6 +133,7 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
                             const ChildBMIChart(),
                             ElevatedButton(
                               onPressed: (){
+                                //TODO: PLAN NUTRICIONAL SEMANAL
                                 // Navigator.push(
                                 //     context,
                                 //     PageTransition(

@@ -10,12 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/view/pages/child/child_daily_nutritional_plan_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/domain/service/child_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/pages/child/register_child_preferences_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widgets/child/child_preferences_items.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widgets/common/grid_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/service/meal_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/meal_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/service/parent_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/parent_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presenter/child_register_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/child_register_presenter.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/connection_tags.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/connection_tags.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_user_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/pages/child/child_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/child_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/child_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/child_list_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/register_child_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/register_child_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widgets/common/button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widgets/common/button.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
