@@ -26,7 +26,7 @@ class _ButtonState extends State<Button>{
         minimumSize: const Size(300, 70),
         maximumSize: const Size(400, 100),
         primary: widget.color,
-        elevation: 0,
+        //elevation: 0,
         padding: const EdgeInsets.symmetric(vertical: 20),
         textStyle: const TextStyle(fontSize: 15)
     );

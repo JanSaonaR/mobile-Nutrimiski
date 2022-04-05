@@ -346,7 +346,7 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                           color: secondaryColor,
                           press: (){
                             final isValid = _formKey.currentState!.validate();
-                            if (isValid) {
+                            if (isValid && image != null) {
                               _formKey.currentState!.save();
                               widget.goToRolRegisterForm();
                             }

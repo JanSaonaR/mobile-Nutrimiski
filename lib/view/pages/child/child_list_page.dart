@@ -25,6 +25,8 @@ class _ChildListPageState extends State<ChildListPage> {
   @override
   Widget build(BuildContext context) {
 
+    final children = Provider.of<ChildPresenter>(context, listen: false).children;
+
     final screenSize = MediaQuery.of(context).size;
 
     return SizedBox(
@@ -33,16 +35,18 @@ class _ChildListPageState extends State<ChildListPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Lista de Hijos', style: TextStyle(color: primaryColor, fontSize: 18, fontWeight: FontWeight.bold),),
-          Expanded(
+
+          children.isNotEmpty
+          ? Expanded(
             child: Stack(
               children: [
                 Positioned.fill(
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
-                    itemCount: Provider.of<ChildPresenter>(context, listen: false).children.length,
+                    itemCount: children.length,
                     itemBuilder: (BuildContext context, int index) {
 
-                      Child child = Provider.of<ChildPresenter>(context, listen: false).children[index];
+                      Child child = children[index];
 
                       return ChildListItemView(child: child,);
                     },
@@ -73,7 +77,8 @@ class _ChildListPageState extends State<ChildListPage> {
                 )
               ],
             ),
-          ),
+          )
+          : const Center(child: Text('Ups!, parece ser que no tienes hijos registrados'))
         ],
       ),
     );

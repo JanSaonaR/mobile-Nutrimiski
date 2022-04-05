@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
 import 'package:mobile_nutrimiski/view/pages/child/child_list_page.dart';
