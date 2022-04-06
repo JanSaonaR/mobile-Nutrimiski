@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
 import 'package:mobile_nutrimiski/util/connection_tags.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +25,24 @@ class ChildService {
 
     return true;
 
+  }
+
+  Future<bool> deleteChild(BuildContext context, int childId) async {
+
+    final dio = Dio();
+    dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
+
+    var uri = baseUrl + childEndpoint;
+
+    var response = await dio.delete(uri, queryParameters: {
+      'childId': childId
+    });
+
+    if(response.statusCode == 200) {
+      return true;
+    }
+
+    return false;
   }
 
 }

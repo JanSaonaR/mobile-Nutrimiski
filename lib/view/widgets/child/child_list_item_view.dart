@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:mobile_nutrimiski/model/entitie/child.dart';
 import 'package:mobile_nutrimiski/view/pages/child/child_detail_page.dart';
 import 'package:page_transition/page_transition.dart';
@@ -47,29 +47,54 @@ class _ChildListItemViewState extends State<ChildListItemView> {
           ],
           borderRadius: const BorderRadius.all(Radius.circular(25))
         ),
-        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            widget.child.sex.toString() == "H" ?
-            const CircleAvatar(
-              backgroundImage: AssetImage("assets/images/boy.png"),
-              radius: 60,
-            ) : const CircleAvatar(
-              backgroundImage: AssetImage("assets/images/girl.png"),
-              radius: 60,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
+        margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(25.0),
+          child: Slidable(
+            endActionPane: ActionPane(
+              motion: const BehindMotion(),
+              extentRatio: 0.30,
               children: [
-                Text(widget.child.firstName!, style: const TextStyle(fontWeight: FontWeight.bold),),
-                Text(widget.child.lastName!, style: const TextStyle(color: alternativeTextColor, fontSize: 12)),
-                Text(widget.child.age.toString() + " años", style: const TextStyle(color: alternativeTextColor, fontSize: 12)),
+                SlidableAction(
+                  onPressed: (context) async {
+                    Provider.of<ChildPresenter>(context, listen: false).deleteChild(context, widget.child.childId!).then((value){
+                      if(value) {
+                        setState((){});
+                      }
+                    });
+                  },
+                  backgroundColor: Colors.red,
+                  icon: Icons.delete,
+                  label: 'Eliminar',
+                )
               ],
-            )
-          ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  widget.child.sex.toString() == "H" ?
+                  const CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/boy.png"),
+                    radius: 60,
+                  ) : const CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/girl.png"),
+                    radius: 60,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.child.firstName!, style: const TextStyle(fontWeight: FontWeight.bold),),
+                      Text(widget.child.lastName!, style: const TextStyle(color: alternativeTextColor, fontSize: 12)),
+                      Text(widget.child.age.toString() + " años", style: const TextStyle(color: alternativeTextColor, fontSize: 12)),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

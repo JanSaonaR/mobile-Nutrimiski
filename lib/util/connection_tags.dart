@@ -21,6 +21,8 @@ const String nutritionistRegister = "register/nutritionist";
 
 //----------- CHILD -----------//
 
+const childEndpoint = "child";
+
 const String getChildren = "children";
 
 const String childRegister = "registerChild";

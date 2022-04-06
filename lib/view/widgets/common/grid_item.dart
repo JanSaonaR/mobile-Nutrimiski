@@ -31,7 +31,7 @@ class _GridItemState extends State<GridItem> {
           borderRadius: const BorderRadius.all(Radius.circular(15.0)),
         ),
         child: Center(
-          child: Text(widget.value)
+          child: Text(widget.value, style: const TextStyle(fontSize: 11.5)),
         ),
       )
     );
