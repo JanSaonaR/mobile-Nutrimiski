@@ -37,11 +37,10 @@ class _ChildListPageState extends State<ChildListPage> {
         children: [
           const Text('Lista de Hijos', style: TextStyle(color: primaryColor, fontSize: 18, fontWeight: FontWeight.bold),),
 
-          children.isNotEmpty
-          ? Expanded(
+          Expanded(
             child: Stack(
               children: [
-                Positioned.fill(
+                children.isNotEmpty ? Positioned.fill(
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: children.length,
@@ -52,7 +51,7 @@ class _ChildListPageState extends State<ChildListPage> {
                       return ChildListItemView(child: child,);
                     },
                   ),
-                ),
+                ) : const Center(child: Text('Ups!, parece ser que no tienes hijos registrados')),
                 Positioned(
                   bottom: 0,
                   right: 0,
@@ -81,7 +80,6 @@ class _ChildListPageState extends State<ChildListPage> {
               ],
             ),
           )
-          : const Center(child: Text('Ups!, parece ser que no tienes hijos registrados'))
         ],
       ),
     );
