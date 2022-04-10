@@ -7,6 +7,7 @@ import 'package:mobile_nutrimiski/util/util.dart';
 import 'package:mobile_nutrimiski/view/pages/child/child_list_page.dart';
 import 'package:provider/provider.dart';
 
+import '../../../presenter/category_presenter.dart';
 import '../../../provider/bottom_navigation_bar_provider.dart';
 import '../../widgets/app/bottom_navigation_bar_doctor_view.dart';
 import '../../widgets/app/bottom_navigation_bar_view.dart';
@@ -28,10 +29,14 @@ class _AppPageState extends State<AppPage> {
   @override
   void initState() {
     if(isParent()){
-      _future = Provider.of<ChildPresenter>(context, listen: false).getChildren();
+      _future = Provider.of<ChildPresenter>(context, listen: false).getChildren().whenComplete((){
+        Provider.of<CategoryPresenter>(context, listen: false).getAllCategories();
+      });
     }
     else{
-      _future = Provider.of<ParentPresenter>(context, listen: false).getParents();
+      _future = Provider.of<ParentPresenter>(context, listen: false).getParents().whenComplete((){
+        Provider.of<CategoryPresenter>(context, listen: false).getAllCategories();
+      });
     }
     super.initState();
   }

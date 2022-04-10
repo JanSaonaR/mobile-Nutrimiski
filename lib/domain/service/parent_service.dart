@@ -56,6 +56,8 @@ class ParentService{
 
     String dataEncoded = json.encode(child);
 
+    bool statusCodeResponse = false;
+
     var userToken =  UserSession().getToken();
 
     MultipartField mf = MultipartField(dataEncoded, headers: {
@@ -76,11 +78,12 @@ class ParentService{
     final decodedMap = json.decode(responseString);
 
     if(response.statusCode == 201) {
+      statusCodeResponse = true;
        await Provider.of<ChildRegisterPresenter>(context, listen: false)
           .setRegisteredChildId(decodedMap['data']['childId']);
-      return true;
+      return statusCodeResponse;
     }
-    return false;
+    return statusCodeResponse;
   }
 
   Future<List<Child>> getChildrenFromParent() async {

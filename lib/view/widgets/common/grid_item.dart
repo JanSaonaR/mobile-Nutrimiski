@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_nutrimiski/model/entitie/category_ingredient.dart';
+import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
+import 'package:provider/provider.dart';
 
 class GridItem extends StatefulWidget {
-  final String value;
-  final ValueChanged<bool> isSelected;
+  final CategoryIngredient ingredient;
 
-  const GridItem({required this.value,
-    required this.isSelected, Key? key}) : super(key: key);
+  const GridItem({required this.ingredient, Key? key}) : super(key: key);
 
   @override
   State<GridItem> createState() => _GridItemState();
@@ -22,8 +23,13 @@ class _GridItemState extends State<GridItem> {
       onTap: () {
         setState(() {
           isSelected = !isSelected;
-          widget.isSelected(isSelected);
         });
+        if(isSelected == true) {
+          Provider.of<ChildPresenter>(context, listen: false).addPreferenceToList(widget.ingredient);
+        }
+        else {
+          Provider.of<ChildPresenter>(context, listen: false).removePreferenceFromList(widget.ingredient);
+        }
       },
       child: Container(
         decoration: BoxDecoration(
@@ -31,7 +37,7 @@ class _GridItemState extends State<GridItem> {
           borderRadius: const BorderRadius.all(Radius.circular(15.0)),
         ),
         child: Center(
-          child: Text(widget.value, style: const TextStyle(fontSize: 11.5)),
+          child: Text(widget.ingredient.name!, style: const TextStyle(fontSize: 11.5)),
         ),
       )
     );

@@ -45,3 +45,8 @@ const String getMealsByDayEndpoint = "getMealsByDay";
 
 const String getMealsBetweenDatesEndpoint = "betweenDates";
 
+//----------- INGREDIENTS -----------//
+
+const String ingredientsEndpoint = "ingredient";
+
+const String categoriesEndpoint = "/categories";
