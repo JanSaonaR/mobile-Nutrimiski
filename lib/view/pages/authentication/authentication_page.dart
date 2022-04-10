@@ -76,7 +76,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                         Column(
                           children: [
                             Text('BIENVENIDO A', style: TextStyle(color: Colors.white, fontSize: screenSize.width/10, fontWeight: FontWeight.bold),),
-                            Text('NUTRIMIKUY', style: TextStyle(color: Colors.white, fontSize: screenSize.width/9, fontWeight: FontWeight.bold),),
+                            Text('NUTRIMISKY', style: TextStyle(color: Colors.white, fontSize: screenSize.width/9, fontWeight: FontWeight.bold),),
                             const SizedBox(
                               height: 20.0,
                             ),

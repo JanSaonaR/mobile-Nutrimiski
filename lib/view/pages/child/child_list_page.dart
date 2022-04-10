@@ -1,18 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
-import 'package:mobile_nutrimiski/presenter/register_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
 import 'package:mobile_nutrimiski/view/pages/child/register_child_page.dart';
-import 'package:mobile_nutrimiski/view/pages/child/register_child_preferences_page.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/entitie/child.dart';
-import '../../../util/styles.dart';
 import '../../widgets/child/child_list_item_view.dart';
-import '../../widgets/common/button.dart';
 
 class ChildListPage extends StatefulWidget {
     const ChildListPage({Key? key}) : super(key: key);
@@ -51,7 +46,7 @@ class _ChildListPageState extends State<ChildListPage> {
                       return ChildListItemView(child: child,);
                     },
                   ),
-                ) : const Center(child: Text('Ups!, parece ser que no tienes hijos registrados')),
+                ) : const Center(child: Text('Ups!, parece ser que no tienes hijos registrados', style: TextStyle(color: Colors.grey, fontSize: 12))),
                 Positioned(
                   bottom: 0,
                   right: 0,

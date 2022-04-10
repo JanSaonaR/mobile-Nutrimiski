@@ -17,10 +17,15 @@ class RegisterPresenter extends ChangeNotifier{
   final Map<String, dynamic> _nutritionistRegisterDto = NutritionistRegisterDto("", "", "", "", "", "", "", "H", "").toJson();
   final ParentService _parentService = ParentService();
   final NutritionistService _nutritionistService = NutritionistService();
-  late File _file;
+  late File? _file;
   bool _loader = false;
+  bool _validateImage = true;
 
   int _rol = 0;
+
+  bool getValidateImage(){
+    return _validateImage;
+  }
 
   getImage(){
     return _image;
@@ -40,6 +45,11 @@ class RegisterPresenter extends ChangeNotifier{
 
   setLoader(bool newState){
     _loader = newState;
+    notifyListeners();
+  }
+
+  validateImage(bool newState){
+    _validateImage = newState;
     notifyListeners();
   }
 

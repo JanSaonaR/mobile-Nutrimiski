@@ -70,7 +70,12 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         SizedBox(height: screenSize.height/50),
                         const Text('LOGO', style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
-                        SizedBox(height: screenSize.height/5),
+                        SizedBox(height: screenSize.height * 0.15),
+                        Visibility(
+                          visible: Provider.of<UserPresenter>(context).getShowMessageError(),
+                          child: Text(Provider.of<UserPresenter>(context).getMessageError(),style: TextStyle(color: Colors.red, fontSize: 12),),
+                        ),
+                        SizedBox(height: screenSize.height * 0.01),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: const BoxDecoration(
@@ -101,9 +106,9 @@ class _LoginPageState extends State<LoginPage> {
                               if (value!.isEmpty) {
                                 return "Ingrese un correo";
                               }
-                              // if (!value.contains("@")) {
-                              //   return "Ingrese un correo valido";
-                              // }
+                              if (!value.contains("@") || !value.contains(".com")) {
+                                return "Ingrese un correo valido";
+                              }
                             },
                             onSaved: (value) {
                               _toSend = UserLoginDto(value!, _toSend.password);
@@ -147,6 +152,9 @@ class _LoginPageState extends State<LoginPage> {
                               if (value!.isEmpty) {
                                 return "Ingrese una contraseña";
                               }
+                              if (value.length > 16 || value.length < 8) {
+                                return "Debe tener entre 8 a 16 caracteres";
+                              }
                             },
                           ),
                         ),
@@ -161,25 +169,29 @@ class _LoginPageState extends State<LoginPage> {
                           text: "INICIAR SESIÓN",
                           color: secondaryColor,
                           press: () {
-                            Provider.of<UserPresenter>(context, listen: false).setLoader(true);
-                            _formKey.currentState!.save();
-                            Provider.of<UserPresenter>(context, listen: false).loginUser(_toSend).then((value){
-                              if(value){
-                                Navigator.pushReplacement(
-                                    context,
-                                    PageTransition(
-                                        duration: const Duration(milliseconds: 200),
-                                        reverseDuration: const Duration(milliseconds: 200),
-                                        type: PageTransitionType.rightToLeft,
-                                        child: const AppPage()
-                                    )
-                                );
-                                Provider.of<UserPresenter>(context, listen: false).setLoader(false);
-                              }
-                              else{
-                                Provider.of<UserPresenter>(context, listen: false).setLoader(false);
-                              }
-                            });
+                            bool validated = _formKey.currentState!.validate();
+                            if(validated){
+                              Provider.of<UserPresenter>(context, listen: false).setLoader(true);
+                              _formKey.currentState!.save();
+                              Provider.of<UserPresenter>(context, listen: false).loginUser(_toSend).then((value){
+                                if(value == 0){
+                                  Navigator.pushReplacement(
+                                      context,
+                                      PageTransition(
+                                          duration: const Duration(milliseconds: 200),
+                                          reverseDuration: const Duration(milliseconds: 200),
+                                          type: PageTransitionType.rightToLeft,
+                                          child: const AppPage()
+                                      )
+                                  );
+                                  Provider.of<UserPresenter>(context, listen: false).setLoader(false);
+                                }
+                                else{
+                                  Provider.of<UserPresenter>(context, listen: false).setLoader(false);
+                                  Provider.of<UserPresenter>(context, listen: false).setMessageError(value);
+                                }
+                              });
+                            }
                           },
                         )
                       ],

@@ -10,13 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presenter/parent_presenter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/pages/parent/parent_list_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widgets/app/bottom_navigation_bar_doctor_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/widgets/parent/parent_list_item_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tunometecabrasaramanbiche.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/service/nutritionist_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/nutritionist_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/service/parent_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/parent_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/service/user_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/user_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/entitie/parent.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/parent.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/entitie/picture.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/picture.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/entitie/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presenter/user_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/user_presenter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/connection_tags.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/connection_tags.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/util.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/authentication_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/authentication_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_user_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/pages/child/child_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/child_list_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/register_child_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/register_child_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/widgets/app/navigation_drawer_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widgets/app/navigation_drawer_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,5 +115,26 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/presenter/parent_presenter.dart</url>
+          <line>28</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/domain/service/nutritionist_service.dart</url>
+          <line>55</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/domain/service/nutritionist_service.dart</url>
+          <line>58</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -6,9 +6,19 @@ class UserPresenter extends ChangeNotifier {
 
   final UserService _userService = UserService();
   bool _loader = false;
+  String _messageError = "";
+  bool _showMessageError = false;
 
-  getLoader(){
+  bool getLoader(){
     return _loader;
+  }
+
+  bool getShowMessageError(){
+    return _showMessageError;
+  }
+
+  String getMessageError(){
+    return _messageError;
   }
 
   setLoader(bool newState){
@@ -16,7 +26,20 @@ class UserPresenter extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> loginUser(UserLoginDto loginUserDto) async {
+  setMessageError(int error){
+    switch(error){
+      case 1:
+        _messageError = "Usuario no registrado.";
+        break;
+      case 2:
+        _messageError = "Contraseña incorrecta.";
+        break;
+    }
+    _showMessageError = true;
+    notifyListeners();
+  }
+
+  Future<int> loginUser(UserLoginDto loginUserDto) async {
     return await _userService.loginUser(loginUserDto);
   }
 

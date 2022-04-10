@@ -20,3 +20,7 @@ String getUserName(){
   }
   return userName;
 }
+
+bool isParent(){
+  return UserSession().getRol() == "P";
+}

@@ -19,6 +19,10 @@ const String parentEndpoint = "parent/";
 
 const String nutritionistRegister = "register/nutritionist";
 
+const String nutritionistEndpoint = "nutritionist/";
+
+const String activeParentsByNutritionist = "activeParents";
+
 //----------- CHILD -----------//
 
 const childEndpoint = "child";
