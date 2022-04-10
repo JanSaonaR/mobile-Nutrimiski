@@ -10,7 +10,6 @@ import 'package:mobile_nutrimiski/model/entitie/parent_child.dart';
 import 'package:mobile_nutrimiski/presenter/child_register_presenter.dart';
 import 'package:mobile_nutrimiski/util/connection_tags.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/provider.dart';
 
 import '../../model/entitie/child.dart';
 import '../../model/entitie/user_session.dart';
@@ -21,7 +20,7 @@ class ParentService{
 
   ParentService();
 
-  Future<bool> registerParent(Map<String, dynamic> parent, File file) async {
+  Future<bool> registerParent(Map<String, dynamic> parent, File? file) async {
 
     String dataEncoded = json.encode(parent);
 
@@ -30,9 +29,20 @@ class ParentService{
     });
 
     var uri = Uri.parse(baseUrl + userEndpoint + parentRegister);
-        var req = MultipartRequestEx('POST', uri)
-      ..fields["request"] = mf
-      ..files.add(await http.MultipartFile.fromPath('profilePic', file.path, contentType: MediaType('application', 'x-tar')));
+
+    late MultipartRequestEx req;
+
+    if(file != null){
+      req = MultipartRequestEx('POST', uri)
+        ..fields["request"] = mf
+        ..files.add(await http.MultipartFile.fromPath('profilePic', file!.path, contentType: MediaType('application', 'x-tar')));
+    }
+    else{
+      req = MultipartRequestEx('POST', uri)
+        ..fields["request"] = mf;
+    }
+
+
 
     var response = await req.send();
 

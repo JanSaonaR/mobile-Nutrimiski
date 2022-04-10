@@ -19,18 +19,34 @@ class User {
   factory User.fromJson(dynamic json) {
 
     Map<String, dynamic> userJson = json;
-    return User(
-      userId: userJson['userId'],
-      firstName: userJson['firstName'].toString(),
-      lastName: userJson['lastName'].toString(),
-      dni: userJson['dni'].toString(),
-      email: userJson['email'].toString(),
-      rol: userJson['rol'],
-      sex: userJson['sex'],
-      birthDate: userJson['birthDate'],
-      phone: userJson['phone'],
-      picture: Picture.fromJson(userJson['picture']),
-      registerDate: userJson['registerDate'],
-    );
+    if(userJson['picture'] != null){
+      return User(
+        userId: userJson['userId'],
+        firstName: userJson['firstName'].toString(),
+        lastName: userJson['lastName'].toString(),
+        dni: userJson['dni'].toString(),
+        email: userJson['email'].toString(),
+        rol: userJson['rol'],
+        sex: userJson['sex'],
+        birthDate: userJson['birthDate'],
+        phone: userJson['phone'],
+        picture: Picture.fromJson(userJson['picture']),
+        registerDate: userJson['registerDate'],
+      );
+    }
+    else{
+      return User(
+        userId: userJson['userId'],
+        firstName: userJson['firstName'].toString(),
+        lastName: userJson['lastName'].toString(),
+        dni: userJson['dni'].toString(),
+        email: userJson['email'].toString(),
+        rol: userJson['rol'],
+        sex: userJson['sex'],
+        birthDate: userJson['birthDate'],
+        phone: userJson['phone'],
+        registerDate: userJson['registerDate'],
+      );
+    }
   }
 }

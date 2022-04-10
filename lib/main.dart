@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/child_register_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/meal_presenter.dart';
+import 'package:mobile_nutrimiski/presenter/parent_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/register_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/user_presenter.dart';
 import 'package:mobile_nutrimiski/provider/bottom_navigation_bar_provider.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => UserPresenter()),
         ChangeNotifierProvider(create: (context) => ChildRegisterPresenter()),
         ChangeNotifierProvider(create: (context) => ChildPresenter()),
+        ChangeNotifierProvider(create: (context) => ParentPresenter()),
         ChangeNotifierProvider(create: (context) => BottomNavigationBarProvider()),
         ChangeNotifierProvider(create: (context) => MealPresenter())
       ],

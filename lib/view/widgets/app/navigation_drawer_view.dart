@@ -18,6 +18,54 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25.0))),
+          actionsAlignment: MainAxisAlignment.spaceEvenly,
+          title: const Text('Cerrar Sesión', style: TextStyle(color: primaryColor, fontSize: 15, fontWeight: FontWeight.bold)),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('¿Desea cerrar sesión?', style: TextStyle(color: primaryColor, fontSize: 15)),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('No', style: TextStyle(color: primaryColor),),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Si', style: TextStyle(color: secondaryColor),),
+              onPressed: () {
+                Navigator.of(context).pop();
+                UserSession().logOut();
+                Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        duration: const Duration(milliseconds: 200),
+                        reverseDuration: const Duration(milliseconds: 200),
+                        type: PageTransitionType.rightToLeft,
+                        child: const AuthenticationPage()
+                    )
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -69,16 +117,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   onPrimary: textFieldColor
                 ),
                 onPressed: (){
-                  UserSession().logOut();
-                  Navigator.pushReplacement(
-                      context,
-                      PageTransition(
-                          duration: const Duration(milliseconds: 200),
-                          reverseDuration: const Duration(milliseconds: 200),
-                          type: PageTransitionType.rightToLeft,
-                          child: const AuthenticationPage()
-                      )
-                  );
+                  _showMyDialog();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

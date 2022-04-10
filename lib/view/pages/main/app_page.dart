@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
+import 'package:mobile_nutrimiski/presenter/parent_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
+import 'package:mobile_nutrimiski/util/util.dart';
 import 'package:mobile_nutrimiski/view/pages/child/child_list_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../../provider/bottom_navigation_bar_provider.dart';
+import '../../widgets/app/bottom_navigation_bar_doctor_view.dart';
 import '../../widgets/app/bottom_navigation_bar_view.dart';
 import '../../widgets/app/navigation_drawer_view.dart';
+import '../parent/parent_list_page.dart';
 
 class AppPage extends StatefulWidget {
 
@@ -23,7 +27,12 @@ class _AppPageState extends State<AppPage> {
 
   @override
   void initState() {
-    _future = Provider.of<ChildPresenter>(context, listen: false).getChildren();
+    if(isParent()){
+      _future = Provider.of<ChildPresenter>(context, listen: false).getChildren();
+    }
+    else{
+      _future = Provider.of<ParentPresenter>(context, listen: false).getParents();
+    }
     super.initState();
   }
 
@@ -39,7 +48,13 @@ class _AppPageState extends State<AppPage> {
       key: _scaffoldKey,
       backgroundColor: backgroundColor,
       extendBody: true,
-      bottomNavigationBar: CustomBottomNavigationBar(
+      bottomNavigationBar: isParent() ?
+      CustomBottomNavigationBar(
+        index: bottomNavigationBarProvider.pageIndex,
+        onChangedTab: (index){
+          bottomNavigationBarProvider.setPageIndex(index);
+        },
+      ) : CustomBottomNavigationBarDoctor(
         index: bottomNavigationBarProvider.pageIndex,
         onChangedTab: (index){
           bottomNavigationBarProvider.setPageIndex(index);
@@ -76,14 +91,25 @@ class _AppPageState extends State<AppPage> {
               future: _future,
               builder: (context, snapshot) {
                 if(snapshot.connectionState == ConnectionState.done){
-                  return IndexedStack(
-                      index: bottomNavigationBarProvider.pageIndex,
-                      children: const [
-                        Text('1'),
-                        Text('2'),
-                        ChildListPage()
-                      ]
-                  );
+                  if(isParent()){
+                    return IndexedStack(
+                        index: bottomNavigationBarProvider.pageIndex,
+                        children: const [
+                          Text('1 Padre'),
+                          Text('2 Padre'),
+                          ChildListPage()
+                        ]
+                    );
+                  }
+                  else{
+                    return IndexedStack(
+                        index: bottomNavigationBarProvider.pageIndex,
+                        children: const [
+                          ParentListPage(),
+                          Text('2 Doctor'),
+                        ]
+                    );
+                  }
                 } else {
                   return const Center(child: CupertinoActivityIndicator());
                 }

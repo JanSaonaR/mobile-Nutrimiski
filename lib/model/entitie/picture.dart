@@ -1,5 +1,5 @@
 class Picture {
-  final int? pictureId;
+  final String? pictureId;
   final String? url;
 
 

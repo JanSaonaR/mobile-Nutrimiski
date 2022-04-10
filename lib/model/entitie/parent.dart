@@ -12,10 +12,13 @@ class Parent {
   factory Parent.fromJson(dynamic json) {
 
     Map<String, dynamic> parentJson = json;
+
+    List childList = parentJson['children'].map((e) => Child.fromJson(e)).toList();
+
     return Parent(
       parentId: parentJson['userId'],
       user: User.fromJson(parentJson['user']),
-      children: parentJson['children'].map((e) => Child.fromJson(e)).toList()
+      children: childList.cast<Child>()
     );
   }
 }
