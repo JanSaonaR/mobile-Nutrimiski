@@ -50,3 +50,7 @@ const String getMealsBetweenDatesEndpoint = "betweenDates";
 const String ingredientsEndpoint = "ingredient";
 
 const String categoriesEndpoint = "/categories";
+
+//---------- NUTRITIONAL PLAN -----------//
+
+const String nutritionalPlan = "nutritionalPlan";

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_nutrimiski/presenter/nutritional_plan_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
 import 'package:mobile_nutrimiski/view/pages/main/app_page.dart';
 import 'package:provider/provider.dart';
@@ -147,9 +148,14 @@ class _RegisterChildPreferencesPageState extends State<RegisterChildPreferencesP
                 child: Button(
                   press: () {
                     Provider.of<ChildPresenter>(context, listen: false).saveRegisteredChildPreferences(context).whenComplete((){
-                      Navigator.pushReplacement(context, MaterialPageRoute(
-                        builder: (BuildContext context) => const AppPage(),
-                      ));
+                      Provider.of<NutritionalPlanPresenter>(context, listen: false).createNutritionalPlan(context).then((value){
+                        if(value == true) {
+                          Navigator.pushReplacement(context, MaterialPageRoute(
+                            builder: (BuildContext context) => const AppPage(),
+                          ));
+                        }
+                      });
+
                     });
                   },
                   color: secondaryColor,

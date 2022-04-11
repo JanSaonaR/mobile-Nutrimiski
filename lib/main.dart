@@ -7,6 +7,7 @@ import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/child_register_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/ingredient_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/meal_presenter.dart';
+import 'package:mobile_nutrimiski/presenter/nutritional_plan_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/parent_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/register_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/user_presenter.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => MealPresenter()),
         ChangeNotifierProvider(create: (context) => IngredientPresenter()),
         ChangeNotifierProvider(create: (context) => CategoryPresenter()),
+        ChangeNotifierProvider(create: (context) => NutritionalPlanPresenter()),
       ],
       child: MaterialApp(
           localizationsDelegates: const [
