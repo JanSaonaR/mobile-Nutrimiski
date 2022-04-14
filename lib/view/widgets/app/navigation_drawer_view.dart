@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
 import 'package:mobile_nutrimiski/view/pages/authentication/authentication_page.dart';
-import 'package:mobile_nutrimiski/view/pages/authentication/login_page.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../../model/entitie/user_session.dart';

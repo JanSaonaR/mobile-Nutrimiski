@@ -140,4 +140,18 @@ class ParentService{
     return [];
   }
 
+  Future<String> getActiveNutritionist() async{
+    final dio = Dio();
+    dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
+
+    var uri = baseUrl + parentEndpoint + activeNutritionist;
+
+    var response = await dio.get(uri, queryParameters: {'parentId' : UserSession().getId()});
+
+    if(response.statusCode == 200) {
+      return response.data["data"]["user"]["dni"];
+    }
+    return "";
+  }
+
 }

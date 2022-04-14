@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_nutrimiski/presenter/chat_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
 import 'package:mobile_nutrimiski/presenter/parent_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
 import 'package:mobile_nutrimiski/util/util.dart';
+import 'package:mobile_nutrimiski/view/pages/chat/chat_page.dart';
 import 'package:mobile_nutrimiski/view/pages/child/child_list_page.dart';
 import 'package:provider/provider.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
+import '../../../model/entitie/user_session.dart';
 import '../../../presenter/category_presenter.dart';
 import '../../../provider/bottom_navigation_bar_provider.dart';
 import '../../widgets/app/bottom_navigation_bar_doctor_view.dart';
@@ -26,16 +30,38 @@ class _AppPageState extends State<AppPage> {
 
   late var _future;
 
+  Future<void> initUser() async {
+    var client = StreamChat.of(context).client;
+    await client.connectUser(
+      User(
+          id: UserSession().getDni(),
+          extraData: {
+            "name" : UserSession().getFirstName()
+          }
+      ),
+      client.devToken(UserSession().getDni()).rawValue,);
+  }
+
   @override
   void initState() {
     if(isParent()){
-      _future = Provider.of<ChildPresenter>(context, listen: false).getChildren().whenComplete((){
-        Provider.of<CategoryPresenter>(context, listen: false).getAllCategories();
+      _future = initUser().whenComplete((){
+        Provider.of<ChildPresenter>(context, listen: false).getNutritionist().whenComplete((){
+          Provider.of<ChatPresenter>(context, listen: false).initChannels(Provider.of<ChildPresenter>(context, listen: false).nutritionistId, [], StreamChat.of(context).client).whenComplete((){
+            Provider.of<ChildPresenter>(context, listen: false).getChildren().whenComplete((){
+              Provider.of<CategoryPresenter>(context, listen: false).getAllCategories();
+            });
+          });
+        });
       });
     }
     else{
-      _future = Provider.of<ParentPresenter>(context, listen: false).getParents().whenComplete((){
-        Provider.of<CategoryPresenter>(context, listen: false).getAllCategories();
+      _future = initUser().whenComplete((){
+        Provider.of<ParentPresenter>(context, listen: false).getParents().whenComplete((){
+          Provider.of<ChatPresenter>(context, listen: false).initChannels(UserSession().getDni(), Provider.of<ParentPresenter>(context, listen: false).parents, StreamChat.of(context).client).whenComplete((){
+            Provider.of<CategoryPresenter>(context, listen: false).getAllCategories();
+          });
+        });
       });
     }
     super.initState();
@@ -101,7 +127,7 @@ class _AppPageState extends State<AppPage> {
                         index: bottomNavigationBarProvider.pageIndex,
                         children: const [
                           Text('1 Padre'),
-                          Text('2 Padre'),
+                          ChatPage(),
                           ChildListPage()
                         ]
                     );
@@ -111,7 +137,7 @@ class _AppPageState extends State<AppPage> {
                         index: bottomNavigationBarProvider.pageIndex,
                         children: const [
                           ParentListPage(),
-                          Text('2 Doctor'),
+                          ChatPage(),
                         ]
                     );
                   }

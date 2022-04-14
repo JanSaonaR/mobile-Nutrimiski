@@ -12,6 +12,9 @@
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/selected_meal_details.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/entitie/meal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/meal.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" afterDir="false" />
@@ -103,16 +106,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/domain/service/parent_service.dart</url>
-          <line>130</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/domain/service/parent_service.dart</url>
-          <line>124</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/presenter/parent_presenter.dart</url>
           <line>52</line>

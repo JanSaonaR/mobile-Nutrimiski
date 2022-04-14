@@ -1,7 +1,7 @@
 class UserSession{
 
   int? _id;
-  String? _token, _firstName, _lastName, _email, _rol, _userImage;
+  String? _token, _firstName, _lastName, _email, _rol, _userImage, _dni;
 
   static final UserSession _singleton = UserSession._internal();
 
@@ -13,13 +13,14 @@ class UserSession{
     _userImage = "";
   }
 
-  userLogin(int id, String token, String firstName, String lastName, String email, String rol){
+  userLogin(int id, String token, String firstName, String lastName, String email, String rol, String dni){
     _id = id;
     _token = token;
     _firstName = firstName;
     _lastName = lastName;
     _email = email;
     _rol = rol;
+    _dni = dni;
   }
 
   setUserImage(String userImage){
@@ -33,6 +34,7 @@ class UserSession{
   String getToken() { return _token!; }
   String getRol(){ return _rol!; }
   String? getImage() { return _userImage; }
+  String getDni() { return _dni!; }
 
   UserSession._internal();
 
