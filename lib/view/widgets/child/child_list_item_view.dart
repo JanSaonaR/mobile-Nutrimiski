@@ -51,22 +51,20 @@ class _ChildListItemViewState extends State<ChildListItemView> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(25.0),
           child: Slidable(
-            endActionPane: ActionPane(
-              motion: const BehindMotion(),
-              extentRatio: 0.30,
-              children: [
-                SlidableAction(
-                  onPressed: (context) async {
-                    Provider.of<ChildPresenter>(context, listen: false).deleteChild(context, widget.child.childId!).whenComplete((){
-                      setState((){});
-                    });
-                  },
-                  backgroundColor: Colors.red,
-                  icon: Icons.delete,
-                  label: 'Eliminar',
-                )
-              ],
-            ),
+            actionPane: const SlidableDrawerActionPane(),
+            actionExtentRatio: 0.30,
+            secondaryActions: [
+              IconSlideAction(
+                onTap: () async {
+                  Provider.of<ChildPresenter>(context, listen: false).deleteChild(context, widget.child.childId!).whenComplete((){
+                    setState((){});
+                  });
+                },
+                color: Colors.red,
+                icon: Icons.delete,
+                caption: 'Eliminar',
+              )
+            ],
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
               child: Row(
