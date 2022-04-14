@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_nutrimiski/view/pages/nutritional_plan/selected_meal_details.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/entitie/meal.dart';
@@ -177,6 +179,7 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                   )
                 ],
               ),
+              const SizedBox(height: 15.0),
               Expanded(
                 child: FutureBuilder(
                   future: Provider.of<MealPresenter>(context, listen: false).getMealsByDay(context, selectedDate),
@@ -185,46 +188,68 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
 
                       List<Meal> meals = Provider.of<MealPresenter>(context, listen: false).getMealsByDayList();
 
-                      return ListView.builder(
-                        itemCount: meals.length,
-                        itemBuilder: (context, index) {
+                      if(meals.isEmpty || meals == null) {
+                        return Center(child: Text('No existen comidas agendadas para el día de hoy'));
+                      } else {
+                        return ListView.builder(
+                          itemCount: meals.length,
+                          itemBuilder: (context, index) {
 
-                          final currentMeal = meals[index];
+                            final currentMeal = meals[index];
 
-                          return Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-                            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
-                                  offset: const Offset(0, 4),
-                                )
-                              ],
-                              borderRadius: const BorderRadius.all(Radius.circular(25))
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                CircleAvatar(
-                                  radius: 55,
-                                  backgroundImage: AssetImage('assets/images/ramen.jpg'),
+                            return GestureDetector(
+                              onTap: (){
+                                Provider.of<MealPresenter>(context, listen: false).selectedMeal = currentMeal;
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        duration: const Duration(milliseconds: 200),
+                                        reverseDuration: const Duration(milliseconds: 200),
+                                        type: PageTransitionType.rightToLeft,
+                                        child: const MealDetailsPage()
+                                    )
+                                );
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+                                padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.1),
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                        offset: const Offset(0, 4),
+                                      )
+                                    ],
+                                    borderRadius: const BorderRadius.all(Radius.circular(25))
                                 ),
-                                Column(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(currentMeal.name!),
-                                    Text(currentMeal.totalCalories.toString()),
-                                    Text(currentMeal.schedule!)
+                                    CircleAvatar(
+                                      radius: 55,
+                                      backgroundImage: AssetImage('assets/images/ramen.jpg'),
+                                    ),
+                                    const SizedBox(width: 15.0),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(currentMeal.name!, overflow: TextOverflow.ellipsis, maxLines: 1, softWrap: false, style: TextStyle(color: Colors.grey),),
+                                          Text('${currentMeal.totalCalories.toString()} kcal', style: TextStyle(color: Colors.grey),),
+                                          Align(alignment: Alignment.bottomRight, child: Text(currentMeal.schedule!))
+                                        ],
+                                      ),
+                                    )
                                   ],
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      );
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }
                     }
                     else {
                       return Center(child: CircularProgressIndicator());

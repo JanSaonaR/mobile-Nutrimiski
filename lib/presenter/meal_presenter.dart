@@ -11,6 +11,8 @@ class MealPresenter extends ChangeNotifier {
 
   List<Meal> mealsBetweenDates = [];
 
+  late Meal selectedMeal;
+
   getMealsByDayList(){
     return mealsByDay;
   }
