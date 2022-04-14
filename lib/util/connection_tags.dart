@@ -15,6 +15,8 @@ const String parentRegister = "register/parent";
 
 const String parentEndpoint = "parent/";
 
+const String activeNutritionist = "activeNutritionists";
+
 //----------- NUTRITIONIST -----------//
 
 const String nutritionistRegister = "register/nutritionist";

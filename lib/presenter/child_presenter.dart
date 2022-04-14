@@ -18,8 +18,16 @@ class ChildPresenter extends ChangeNotifier {
 
   final List<CategoryIngredient> _preferences = [];
 
+  String nutritionistId = "";
+
   bool _loader = false;
   bool childrenReady = false;
+
+  Future<void> getNutritionist() async {
+    await _parentService.getActiveNutritionist().then((value){
+      nutritionistId = value;
+    });
+  }
 
   addPreferenceToList(CategoryIngredient ingredient) {
     _preferences.add(ingredient);
