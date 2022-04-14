@@ -17,7 +17,7 @@ class RegisterPresenter extends ChangeNotifier{
   final Map<String, dynamic> _nutritionistRegisterDto = NutritionistRegisterDto("", "", "", "", "", "", "", "M", "").toJson();
   final ParentService _parentService = ParentService();
   final NutritionistService _nutritionistService = NutritionistService();
-  late File? _file;
+  late File _file = File("");
   bool _loader = false;
   bool _validateImage = true;
 
@@ -80,10 +80,20 @@ class RegisterPresenter extends ChangeNotifier{
   Future<bool> registerUser() async {
     if(_rol == 0){
       Map<String, dynamic> registerDto = RegisterDto(_parentRegisterDto).toJson();
-      return await _parentService.registerParent(_parentRegisterDto, _file);
+      if(_file.path != ""){
+        return await _parentService.registerParent(_parentRegisterDto, _file);
+      }
+      else{
+        return await _parentService.registerParent(_parentRegisterDto, null);
+      }
     }
     else{
-      return await _nutritionistService.registerNutritionist(_nutritionistRegisterDto, _file);
+      if(_file.path != ""){
+        return await _nutritionistService.registerNutritionist(_nutritionistRegisterDto, _file);
+      }
+      else{
+        return await _nutritionistService.registerNutritionist(_nutritionistRegisterDto, null);
+      }
     }
   }
 

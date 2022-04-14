@@ -146,9 +146,9 @@ class _ChildRegisterFormPageState extends State<ChildRegisterFormPage> {
                                       if (value!.isEmpty) {
                                         return "Ingrese un nombre";
                                       }
-                                      // if (!value.contains("@")) {
-                                      //   return "Ingrese un correo valido";
-                                      // }
+                                      if(!RegExp(r"^[a-zA-ZÀ-ÿ ´]+$").hasMatch(value)){
+                                        return "Ingrese un apellido válido";
+                                      }
                                     },
                                     onSaved: (value) {
                                       Provider.of<ChildRegisterPresenter>(context, listen: false).setChildRegisterDto('firstName', value!);
@@ -186,9 +186,9 @@ class _ChildRegisterFormPageState extends State<ChildRegisterFormPage> {
                                       if (value!.isEmpty) {
                                         return "Ingrese un apellido";
                                       }
-                                      // if (!value.contains("@")) {
-                                      //   return "Ingrese un correo valido";
-                                      // }
+                                      if(!RegExp(r"^[a-zA-ZÀ-ÿ ´]+$").hasMatch(value)){
+                                        return "Ingrese un apellido válido";
+                                      }
                                     },
                                     onSaved: (value) {
                                       Provider.of<ChildRegisterPresenter>(context, listen: false).setChildRegisterDto('lastName', value!);
