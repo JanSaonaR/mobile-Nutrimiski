@@ -295,10 +295,6 @@ class _UserRegisterFormPageState extends State<UserRegisterFormPage> {
                                       Container(
                                         width: 300,
                                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                                        decoration: const BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                                            color: textFieldColor
-                                        ),
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton<String>(
                                             dropdownColor: textFieldColor,
