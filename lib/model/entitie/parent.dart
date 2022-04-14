@@ -16,7 +16,7 @@ class Parent {
     List childList = parentJson['children'].map((e) => Child.fromJson(e)).toList();
 
     return Parent(
-      parentId: parentJson['userId'],
+      parentId: parentJson['parentId'],
       user: User.fromJson(parentJson['user']),
       children: childList.cast<Child>()
     );

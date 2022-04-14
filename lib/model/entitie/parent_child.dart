@@ -7,7 +7,7 @@ class ParentChild {
 
     Map<String, dynamic> parentJson = json;
     return ParentChild(
-        parentId: parentJson['userId']
+        parentId: parentJson['parentId']
     );
   }
 }
