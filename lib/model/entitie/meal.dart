@@ -35,12 +35,12 @@ class Meal {
       day: mealJson['day'],
       schedule: mealJson['schedule'],
       name: mealJson['name'],
-      protein: mealJson['protein'],
-      fat: mealJson['fat'],
-      carbohydrates: mealJson['carbohydrates'],
+      protein: mealJson['protein'].toDouble(),
+      fat: mealJson['fat'].toDouble(),
+      carbohydrates: mealJson['carbohydrates'].toDouble(),
       ingredients: mealJson['ingredients'],
-      totalCalories: mealJson['totalCalories'],
-      gramsPortion: mealJson['gramsPortion'],
+      totalCalories: mealJson['totalCalories'].toDouble(),
+      gramsPortion: mealJson['gramsPortion'].toDouble(),
       imageUrl: mealJson['imageUrl'],
       status: mealJson['status']
     );

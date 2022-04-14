@@ -10,26 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/presenter/chat_presenter.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/pages/chat/chat_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view/pages/chat/chat_user_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/selected_meal_details.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/service/parent_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/parent_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/service/user_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/user_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/entitie/user_session.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/user_session.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presenter/child_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/child_presenter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/connection_tags.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/connection_tags.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/widgets/app/navigation_drawer_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widgets/app/navigation_drawer_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/widgets/child/child_list_item_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/widgets/child/child_list_item_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/entitie/meal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/entitie/meal.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/child_nutritional_plan.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/child_nutritional_plan.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -50,50 +50,47 @@ class _ChildListItemViewState extends State<ChildListItemView> {
         margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(25.0),
-          child: Text('Hijo')
-          // Slidable(
-          //   endActionPane: ActionPane(
-          //     motion: const BehindMotion(),
-          //     extentRatio: 0.30,
-          //     children: [
-          //       SlidableAction(
-          //         onPressed: (context) async {
-          //           Provider.of<ChildPresenter>(context, listen: false).deleteChild(context, widget.child.childId!).whenComplete((){
-          //             setState((){});
-          //           });
-          //         },
-          //         backgroundColor: Colors.red,
-          //         icon: Icons.delete,
-          //         label: 'Eliminar',
-          //       )
-          //     ],
-          //   ),
-          //   child: Padding(
-          //     padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //       children: [
-          //         widget.child.sex.toString() == "H" ?
-          //         const CircleAvatar(
-          //           backgroundImage: AssetImage("assets/images/boy.png"),
-          //           radius: 60,
-          //         ) : const CircleAvatar(
-          //           backgroundImage: AssetImage("assets/images/girl.png"),
-          //           radius: 60,
-          //         ),
-          //         Column(
-          //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //           crossAxisAlignment: CrossAxisAlignment.start,
-          //           children: [
-          //             Text(widget.child.firstName!, style: const TextStyle(fontWeight: FontWeight.bold),),
-          //             Text(widget.child.lastName!, style: const TextStyle(color: alternativeTextColor, fontSize: 12)),
-          //             Text(widget.child.age.toString() + " años", style: const TextStyle(color: alternativeTextColor, fontSize: 12)),
-          //           ],
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // ),
+          child: Slidable(
+            actionPane: const SlidableDrawerActionPane(),
+            actionExtentRatio: 0.30,
+            secondaryActions: [
+              IconSlideAction(
+                onTap: () async {
+                  Provider.of<ChildPresenter>(context, listen: false).deleteChild(context, widget.child.childId!).whenComplete((){
+                    setState((){});
+                  });
+                },
+                color: Colors.red,
+                icon: Icons.delete,
+                caption: 'Eliminar',
+              )
+            ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  widget.child.sex.toString() == "H" ?
+                  const CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/boy.png"),
+                    radius: 60,
+                  ) : const CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/girl.png"),
+                    radius: 60,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.child.firstName!, style: const TextStyle(fontWeight: FontWeight.bold),),
+                      Text(widget.child.lastName!, style: const TextStyle(color: alternativeTextColor, fontSize: 12)),
+                      Text(widget.child.age.toString() + " años", style: const TextStyle(color: alternativeTextColor, fontSize: 12)),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
