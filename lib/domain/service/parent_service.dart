@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 
 import '../../model/entitie/child.dart';
 import '../../model/entitie/user_session.dart';
+import '../../presenter/parent_presenter.dart';
 import 'multipart_register_service.dart';
 
 
@@ -98,30 +99,44 @@ class ParentService{
 
       List<Child> childList = [];
 
-      for(Map<String, dynamic> element in response.data) {
-        Child child = Child(
-          childId: element["childId"],
-          firstName: element["firstName"],
-          lastName: element["lastName"],
-          dni: element["dni"],
-          height: element["height"],
-          weight: element["weight"],
-          sex: element["sex"],
-          birthDate: element["birthDate"],
-          imc: element["imc"],
-          age: element["age"],
-          parent: ParentChild.fromJson(element["parent"])
-        );
+      for(Map<String, dynamic> element in response.data["data"]) {
+
+        Child child = Child.fromJson(element);
 
         childList.add(child);
 
       }
 
-      //List aux = response.data.map((e) => Child.fromJson(e)).toList();
+      return childList;
+    }
 
+    return [];
+  }
+
+  Future<List<Child>> getChildrenFromParentId(BuildContext context) async {
+    final dio = Dio();
+    dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
+
+    var uri = baseUrl + parentEndpoint + getChildren;
+
+    var response = await dio.get(uri, queryParameters: {'parentId' : Provider.of<ParentPresenter>(context,
+        listen: false).selectedParent.parentId});
+
+    if(response.statusCode == 200) {
+
+      List<Child> childList = [];
+
+      for(Map<String, dynamic> element in response.data["data"]) {
+
+        Child child = Child.fromJson(element);
+
+        childList.add(child);
+
+      }
 
       return childList;
     }
+
     return [];
   }
 

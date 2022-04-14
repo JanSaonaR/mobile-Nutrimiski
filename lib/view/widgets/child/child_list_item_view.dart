@@ -57,10 +57,8 @@ class _ChildListItemViewState extends State<ChildListItemView> {
               children: [
                 SlidableAction(
                   onPressed: (context) async {
-                    Provider.of<ChildPresenter>(context, listen: false).deleteChild(context, widget.child.childId!).then((value){
-                      if(value) {
-                        setState((){});
-                      }
+                    Provider.of<ChildPresenter>(context, listen: false).deleteChild(context, widget.child.childId!).whenComplete((){
+                      setState((){});
                     });
                   },
                   backgroundColor: Colors.red,

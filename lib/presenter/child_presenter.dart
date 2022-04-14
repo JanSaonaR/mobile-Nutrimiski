@@ -52,11 +52,9 @@ class ChildPresenter extends ChangeNotifier {
 
   Future<bool> deleteChild(BuildContext context, int childId) async {
 
-    await _childService.deleteChild(context, childId).then((value){
-      if(value == true) {
-        Provider.of<ChildPresenter>(context, listen: false).children.removeWhere((child) => child.childId == childId);
-        return true;
-      }
+    await _childService.deleteChild(context, childId).whenComplete((){
+      Provider.of<ChildPresenter>(context, listen: false).children.removeWhere((child) => child.childId == childId);
+      return true;
     });
 
     return false;
