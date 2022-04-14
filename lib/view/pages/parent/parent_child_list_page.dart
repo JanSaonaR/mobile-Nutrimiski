@@ -25,7 +25,6 @@ class _ParentChildListPageState extends State<ParentChildListPage> {
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      drawer: const NavigationDrawer(),
       key: _scaffoldKey,
       backgroundColor: backgroundColor,
       extendBody: true,
@@ -46,11 +45,11 @@ class _ParentChildListPageState extends State<ParentChildListPage> {
           Positioned(
             top: 50, left: 25,
             child: InkWell(
-              onTap: () { _scaffoldKey.currentState!.openDrawer(); },
+              onTap: () { Navigator.pop(context); },
               child: const CircleAvatar(
                 radius: 25,
                 backgroundColor: primaryColor,
-                child: Icon(Icons.menu, color: Colors.white, size: 30,),
+                child: Icon(Icons.arrow_back, color: Colors.white, size: 30,),
               ),
             ),
           ),

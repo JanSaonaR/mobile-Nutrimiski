@@ -31,7 +31,13 @@ class MealService {
 
     if(response.statusCode == 200) {
       List<Meal> mealList = [];
-      mealList = response.data.map((e) => Meal.fromJson(e)).toList();
+
+      for(Map<String, dynamic> element in response.data["data"]) {
+        Meal meal = Meal.fromJson(element);
+
+        mealList.add(meal);
+      }
+
       return mealList;
     }
 
@@ -57,7 +63,13 @@ class MealService {
 
     if(response.statusCode == 200) {
       List<Meal> mealList = [];
-      mealList = response.data.map((e) => Meal.fromJson(e)).toList();
+
+      for(Map<String, dynamic> element in response.data["data"]) {
+        Meal meal = Meal.fromJson(element);
+
+        mealList.add(meal);
+      }
+
       return mealList;
     }
 

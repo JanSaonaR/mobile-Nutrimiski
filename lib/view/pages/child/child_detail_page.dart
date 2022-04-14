@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile_nutrimiski/view/pages/nutritional_plan/child_nutritional_plan.dart';
 import 'package:mobile_nutrimiski/view/widgets/common/chart.dart';
 import 'package:mobile_nutrimiski/view/widgets/common/child_information_chip.dart';
 import 'package:page_transition/page_transition.dart';
@@ -134,15 +135,15 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
                             ElevatedButton(
                               onPressed: (){
                                 //TODO: PLAN NUTRICIONAL SEMANAL
-                                // Navigator.push(
-                                //     context,
-                                //     PageTransition(
-                                //         duration: const Duration(milliseconds: 200),
-                                //         reverseDuration: const Duration(milliseconds: 200),
-                                //         type: PageTransitionType.rightToLeft,
-                                //         child: const Container()
-                                //     )
-                                // );
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        duration: const Duration(milliseconds: 200),
+                                        reverseDuration: const Duration(milliseconds: 200),
+                                        type: PageTransitionType.rightToLeft,
+                                        child: const ChildNutritionalPlanPage()
+                                    )
+                                );
                               },
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
