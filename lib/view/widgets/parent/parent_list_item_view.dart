@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import '../../../presenter/child_presenter.dart';
 import '../../../util/colors.dart';
+import '../../pages/parent/parent_child_list_page.dart';
 
 class ParentListItemView extends StatefulWidget {
 
@@ -23,7 +24,6 @@ class _ParentListItemViewState extends State<ParentListItemView> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        //dejo un niño seleccionado para evitar pasar el mismo child como parámetro
         Provider.of<ParentPresenter>(context, listen: false).selectedParent = widget.parent;
         Navigator.push(
             context,
@@ -31,7 +31,7 @@ class _ParentListItemViewState extends State<ParentListItemView> {
                 duration: const Duration(milliseconds: 200),
                 reverseDuration: const Duration(milliseconds: 200),
                 type: PageTransitionType.rightToLeft,
-                child: const ChildDetailsPage()
+                child: const ParentChildListPage()
             )
         );
       },

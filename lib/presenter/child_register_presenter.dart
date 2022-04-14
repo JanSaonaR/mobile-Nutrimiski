@@ -13,7 +13,7 @@ class ChildRegisterPresenter extends ChangeNotifier {
 
   late int _registeredChildId;
 
-  final Map<String, dynamic> _childRegisterDto = ChildRegisterDto("", "", "", "", "H", 0.0, 0.0, 0.0).toJson();
+  final Map<String, dynamic> _childRegisterDto = ChildRegisterDto("", "", "", "", "M", 0.0, 0.0, 0.0).toJson();
 
 
   setRegisteredChildId(int id) => _registeredChildId = id;

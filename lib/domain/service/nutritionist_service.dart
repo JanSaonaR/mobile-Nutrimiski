@@ -45,7 +45,6 @@ class NutritionistService{
     return false;
   }
 
-
   Future<List<Parent>> getParentsByNutritionist() async{
 
     final dio = Dio();

@@ -46,7 +46,7 @@ class _ParentListPageState extends State<ParentListPage> {
 
                       Parent parent = parents[index];
 
-                      return ParentListItemView(parent: parent,);
+                      return ParentListItemView(parent: parent);
                     },
                   ),
                 ) : const Center(child: Text('Ups!, no tiene padres asignados aún', style: TextStyle(color: Colors.grey, fontSize: 12),)),

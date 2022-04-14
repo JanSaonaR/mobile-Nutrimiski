@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
 import 'package:mobile_nutrimiski/view/pages/child/register_child_page.dart';
+import 'package:mobile_nutrimiski/view/pages/child/register_child_preferences_page.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
