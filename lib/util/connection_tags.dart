@@ -41,7 +41,7 @@ const String childPreferencesDelete = "/delete";
 
 const String mealEndpoint = "meal/";
 
-const String getMealsByDayEndpoint = "getMealsByDay";
+const String getMealsByDayEndpoint = "day";
 
 const String getMealsBetweenDatesEndpoint = "betweenDates";
 
