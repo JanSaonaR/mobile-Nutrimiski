@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mobile_nutrimiski/domain/service/nutritionist_service.dart';
 import 'package:mobile_nutrimiski/domain/service/parent_service.dart';
 import 'package:mobile_nutrimiski/model/dto/parent_register_dto.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 import '../model/dto/nutritionist_register_dto.dart';
 import '../model/dto/register_dto.dart';
@@ -22,6 +23,18 @@ class RegisterPresenter extends ChangeNotifier{
   bool _validateImage = true;
 
   int _rol = 0;
+
+  Future<void> initUser(BuildContext context) async {
+    var client = StreamChat.of(context).client;
+    await client.connectUser(
+      User(
+          id: _parentRegisterDto['dni'],
+          extraData: {
+            "name" : _parentRegisterDto['firstName']
+          }
+      ),
+      client.devToken(_parentRegisterDto['dni']).rawValue,);
+  }
 
   bool getValidateImage(){
     return _validateImage;

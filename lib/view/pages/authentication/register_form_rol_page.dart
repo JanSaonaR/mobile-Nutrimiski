@@ -271,8 +271,10 @@ class _RolRegisterFormPageState extends State<RolRegisterFormPage> {
                           _formKey.currentState!.save();
                           Provider.of<RegisterPresenter>(context, listen: false).registerUser().then((value){
                             if(value){
-                              Provider.of<RegisterPresenter>(context, listen: false).setLoader(false);
-                              widget.goToRegisterSuccess();
+                              Provider.of<RegisterPresenter>(context, listen: false).initUser(context).whenComplete((){
+                                Provider.of<RegisterPresenter>(context, listen: false).setLoader(false);
+                                widget.goToRegisterSuccess();
+                              });
                             }
                             else{
                               Provider.of<RegisterPresenter>(context, listen: false).setLoader(false);
