@@ -49,6 +49,8 @@ const String getAlternativeMealsEndpoint = "alternativeMeals";
 
 const String getMealsBetweenDatesEndpoint = "betweenDates";
 
+const String replaceMealEndpoint = "replaceMeal";
+
 //----------- INGREDIENTS -----------//
 
 const String ingredientsEndpoint = "ingredient";

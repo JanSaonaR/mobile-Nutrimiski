@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_nutrimiski/model/dto/alternative_meal_dto.dart';
+import 'package:mobile_nutrimiski/model/dto/replace_meal_dto.dart';
 import 'package:mobile_nutrimiski/model/entitie/meal.dart';
 import 'package:mobile_nutrimiski/presenter/meal_presenter.dart';
 import 'package:mobile_nutrimiski/util/connection_tags.dart';
@@ -110,5 +111,39 @@ class MealService {
     }
 
     return [];
+  }
+
+  Future<Meal> replaceAlternativeMeal(BuildContext context) async {
+    final dio = Dio();
+
+    dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
+
+    final meal = Provider.of<MealPresenter>(context, listen: false).mealToReplace;
+
+    int selectedMealId = Provider.of<MealPresenter>(context, listen: false).selectedMeal.mealId!;
+
+    ReplaceMealDto sendMealData = ReplaceMealDto(
+      carbohydrates: meal.carbohydrates,
+      fat: meal.fat,
+      gramsPortion: meal.gramsPortion,
+      imageUrl: meal.imageUrl,
+      ingredients: meal.ingredients,
+      mealId: selectedMealId,
+      name: meal.name,
+      protein: meal.protein,
+      totalCalories: meal.totalCalories
+    );
+
+    var uri = baseUrl + mealEndpoint + replaceMealEndpoint;
+
+    Response response = await dio.put(uri, data: jsonEncode(sendMealData));
+
+    if(response.statusCode == 200) {
+      Meal responseMeal = Meal.fromJson(response.data["data"]);
+
+      return responseMeal;
+    }
+
+    return meal;
   }
 }

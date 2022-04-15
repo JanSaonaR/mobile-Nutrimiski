@@ -15,6 +15,10 @@ class MealPresenter extends ChangeNotifier {
 
   late Meal selectedMeal;
 
+  late Meal mealToReplace;
+
+  late Meal replacedMeal;
+
   getMealsByDayList(){
     return mealsByDay;
   }
@@ -28,6 +32,8 @@ class MealPresenter extends ChangeNotifier {
   bool mealsBetweenDatesReady = false;
 
   bool alternativeMealsReady = false;
+
+  bool replacedMealReady = false;
 
   Future<bool> getMealsByDay(BuildContext context, String date) async {
 
@@ -76,4 +82,16 @@ class MealPresenter extends ChangeNotifier {
     return alternativeMealsReady;
   }
 
+  Future<Meal> replaceAlternativeMeal(BuildContext context) async {
+    await _mealService.replaceAlternativeMeal(context).then((value){
+      replacedMeal = value;
+
+      if (replacedMeal != null) {
+        return value;
+      }
+
+    });
+
+    return mealToReplace;
+  }
 }

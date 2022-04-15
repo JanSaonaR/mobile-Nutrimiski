@@ -253,17 +253,19 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                             final currentMeal = meals[index];
 
                             return GestureDetector(
-                              onTap: (){
+                              onTap: () async {
                                 Provider.of<MealPresenter>(context, listen: false).selectedMeal = currentMeal;
-                                Navigator.push(
+                                bool? value = await Navigator.push(
                                     context,
-                                    PageTransition(
-                                        duration: const Duration(milliseconds: 200),
-                                        reverseDuration: const Duration(milliseconds: 200),
-                                        type: PageTransitionType.rightToLeft,
-                                        child: const MealDetailsPage()
+                                    MaterialPageRoute<bool>(
+                                      builder: (context) {
+                                        return const MealDetailsPage();
+                                      }
                                     )
                                 );
+                                if(value == true) {
+                                  setState(() {});
+                                }
                               },
                               child: Container(
                                 margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
@@ -312,6 +314,7 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                   }
                 ),
               ),
+              const SizedBox(height: 15.0)
             ],
           ),
         ),

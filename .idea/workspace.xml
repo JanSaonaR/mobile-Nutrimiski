@@ -10,17 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/model/dto/alternative_meal_dto.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/dto/replace_meal_dto.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/domain/service/meal_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/meal_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/connection_tags.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/connection_tags.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/child_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/child_detail_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/child_nutritional_plan.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/child_nutritional_plan.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/selected_meal_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/selected_meal_details.dart" afterDir="false" />
     </list>
@@ -119,6 +114,11 @@
           <url>file://$PROJECT_DIR$/lib/presenter/parent_presenter.dart</url>
           <line>53</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/domain/service/meal_service.dart</url>
+          <line>140</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
