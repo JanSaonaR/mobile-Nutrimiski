@@ -108,7 +108,7 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
                                       ),
                                       const SizedBox(width: 60),
                                       ChildInformationChip(
-                                        text: child.sex == "H"
+                                        text: child.sex == "F"
                                         ? "Hombre" : "Mujer",
                                         icon: FontAwesomeIcons.child
                                       )

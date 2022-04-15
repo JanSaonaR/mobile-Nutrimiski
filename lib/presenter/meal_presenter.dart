@@ -11,15 +11,23 @@ class MealPresenter extends ChangeNotifier {
 
   List<Meal> mealsBetweenDates = [];
 
+  List<Meal> alternativeMeals = [];
+
   late Meal selectedMeal;
 
   getMealsByDayList(){
     return mealsByDay;
   }
 
+  getAlternativeMealsList(){
+    return alternativeMeals;
+  }
+
   bool mealsByDayReady = false;
 
   bool mealsBetweenDatesReady = false;
+
+  bool alternativeMealsReady = false;
 
   Future<bool> getMealsByDay(BuildContext context, String date) async {
 
@@ -51,6 +59,21 @@ class MealPresenter extends ChangeNotifier {
     });
 
     return mealsBetweenDatesReady;
+  }
+
+  Future<bool> getAlternativeMeals(BuildContext context) async {
+    alternativeMeals.clear();
+
+    await _mealService.getAlternativeMeals(context).then((value){
+      alternativeMeals = value;
+
+      if(alternativeMeals.isNotEmpty) {
+        alternativeMealsReady = true;
+      }
+
+    });
+
+    return alternativeMealsReady;
   }
 
 }

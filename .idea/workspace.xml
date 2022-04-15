@@ -10,10 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/model/dto/alternative_meal_dto.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/service/meal_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/meal_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/connection_tags.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/connection_tags.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/child_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/child_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/child_nutritional_plan.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/child_nutritional_plan.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/selected_meal_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/selected_meal_details.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +69,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
