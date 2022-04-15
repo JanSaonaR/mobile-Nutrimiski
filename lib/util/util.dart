@@ -21,6 +21,21 @@ String getUserName(){
   return userName;
 }
 
+
+String getChannelName(){
+  String chatName = UserSession().getLastName() + ', ';
+
+  if(UserSession().getFirstName().contains(" ")){
+    List<String> userFirstName = UserSession().getFirstName().split(" ");
+    chatName = chatName + userFirstName[0];
+  }
+  else{
+    chatName = chatName + UserSession().getFirstName();
+  }
+
+  return chatName;
+}
+
 bool isParent(){
   return UserSession().getRol() == "P";
 }

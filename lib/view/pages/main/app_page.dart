@@ -47,7 +47,7 @@ class _AppPageState extends State<AppPage> {
     if(isParent()){
       _future = initUser().whenComplete((){
         Provider.of<ChildPresenter>(context, listen: false).getNutritionist().whenComplete((){
-          Provider.of<ChatPresenter>(context, listen: false).initChannels(Provider.of<ChildPresenter>(context, listen: false).nutritionistId, [], StreamChat.of(context).client).whenComplete((){
+          Provider.of<ChatPresenter>(context, listen: false).initChannels(Provider.of<ChildPresenter>(context, listen: false).getNutritionistDni(), [], StreamChat.of(context).client).whenComplete((){
             Provider.of<ChildPresenter>(context, listen: false).getChildren().whenComplete((){
               Provider.of<CategoryPresenter>(context, listen: false).getAllCategories();
             });

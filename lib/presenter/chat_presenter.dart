@@ -8,14 +8,14 @@ import '../util/util.dart';
 class ChatPresenter extends ChangeNotifier{
 
 
-  Future<void> initChannels(String? nutritionistId, List<Parent> parents, StreamChatClient client) async{
+  Future<void> initChannels(String? nutritionistDni, List<Parent> parents, StreamChatClient client) async{
     if(isParent()){
       final channel = client.channel(
           'messaging',
-          id: "d${nutritionistId.toString()}p${UserSession().getDni()}",
+          id: "d${nutritionistDni.toString()}p${UserSession().getDni()}",
           extraData: {
-            'name' : 'Nutricionista',
-            'members' : [UserSession().getDni()],
+            'name' : getChannelName(),
+            'members' : [UserSession().getDni(), nutritionistDni],
           });
       await channel.create();
     }
@@ -26,7 +26,6 @@ class ChatPresenter extends ChangeNotifier{
             id: "d${UserSession().getDni()}p${parents[i].user!.dni}",
             extraData: {
               'name' : parents[i].user!.firstName,
-              'members' : [UserSession().getDni()],
             });
         await channel.create();
       }

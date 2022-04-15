@@ -4,6 +4,7 @@ import 'package:mobile_nutrimiski/util/connection_tags.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/entitie/user_session.dart';
+import '../../presenter/child_presenter.dart';
 import '../../presenter/child_register_presenter.dart';
 
 class NutritionalPlanService {
@@ -22,6 +23,7 @@ class NutritionalPlanService {
         });
 
     if (response.statusCode == 201) {
+      Provider.of<ChildPresenter>(context, listen: false).setNutritionistDni(response.data["data"]["medicalAppointment"]["nutritionist"]["user"]["dni"]);
       return true;
     } else {
       return false;

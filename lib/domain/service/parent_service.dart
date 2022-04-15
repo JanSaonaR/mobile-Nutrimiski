@@ -149,7 +149,7 @@ class ParentService{
     var response = await dio.get(uri, queryParameters: {'parentId' : UserSession().getId()});
 
     if(response.statusCode == 200) {
-      return response.data["data"]["user"]["dni"];
+      return response.data["data"][0]["user"]["dni"];
     }
     return "";
   }

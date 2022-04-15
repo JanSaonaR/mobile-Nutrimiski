@@ -18,14 +18,22 @@ class ChildPresenter extends ChangeNotifier {
 
   final List<CategoryIngredient> _preferences = [];
 
-  String nutritionistId = "";
+  String _nutritionistDni = "";
 
   bool _loader = false;
   bool childrenReady = false;
 
+  String getNutritionistDni(){
+    return _nutritionistDni;
+  }
+
+  setNutritionistDni(String dni){
+    _nutritionistDni = dni;
+  }
+
   Future<void> getNutritionist() async {
     await _parentService.getActiveNutritionist().then((value){
-      nutritionistId = value;
+      _nutritionistDni = value;
     });
   }
 
