@@ -12,8 +12,7 @@
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/register_presenter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/authentication/register_form_rol_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/main/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/main/home_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +59,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -110,6 +109,11 @@
           <url>file://$PROJECT_DIR$/lib/presenter/parent_presenter.dart</url>
           <line>53</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/domain/service/meal_service.dart</url>
+          <line>174</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
