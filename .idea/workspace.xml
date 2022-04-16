@@ -11,17 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d9159cf1-75b3-4b15-b8e9-7f891c25fe6f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/service/meal_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/service/meal_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/dto/alternative_meal_dto.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/dto/alternative_meal_dto.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presenter/meal_presenter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/child_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/child_detail_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/child/register_child_preferences_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/child/register_child_preferences_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/main/app_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/pages/main/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/main/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/selected_meal_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/nutritional_plan/selected_meal_details.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
