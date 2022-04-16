@@ -1,12 +1,12 @@
 class AlternativeMealDto {
   final double? calories;
-  final String? schedule;
+  final String? type;
 
-  AlternativeMealDto({this.calories, this.schedule});
+  AlternativeMealDto({this.calories, this.type});
 
   Map toJson() => {
     'calories': calories,
-    'schedule': schedule
+    'type': type
   };
 
 }

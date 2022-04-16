@@ -67,7 +67,7 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                            child.sex == "H"
+                            child.sex == "M"
                             ? 'assets/images/boy.png'
                             : 'assets/images/girl.png'
                           ),
@@ -108,7 +108,7 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
                                       ),
                                       const SizedBox(width: 60),
                                       ChildInformationChip(
-                                        text: child.sex == "F"
+                                        text: child.sex == "M"
                                         ? "Hombre" : "Mujer",
                                         icon: FontAwesomeIcons.child
                                       )

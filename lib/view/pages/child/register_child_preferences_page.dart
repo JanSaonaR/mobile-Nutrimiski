@@ -23,9 +23,12 @@ class RegisterChildPreferencesPage extends StatefulWidget {
   State<RegisterChildPreferencesPage> createState() => _RegisterChildPreferencesPageState();
 }
 
-class _RegisterChildPreferencesPageState extends State<RegisterChildPreferencesPage> {
+class _RegisterChildPreferencesPageState extends State<RegisterChildPreferencesPage> with AutomaticKeepAliveClientMixin{
 
   late List<Category> _categoriesList;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

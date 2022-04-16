@@ -159,23 +159,40 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                                         return Column(
                                           children: meals.map((currentMeal) => GestureDetector(
                                             onTap: (){
-                                              changed = true;
-                                              Provider.of<MealPresenter>(context, listen: false).mealToReplace = currentMeal;
-                                              Provider.of<MealPresenter>(context, listen: false).replaceAlternativeMeal(context).then((value){
-                                                setState(() {
-                                                  Provider.of<MealPresenter>(context, listen: false).selectedMeal = value;
-                                                  currentMeal = value;
-                                                });
-                                              });
-                                              // Navigator.push(
-                                              //     context,
-                                              //     PageTransition(
-                                              //         duration: const Duration(milliseconds: 200),
-                                              //         reverseDuration: const Duration(milliseconds: 200),
-                                              //         type: PageTransitionType.rightToLeft,
-                                              //         child: const MealDetailsPage()
-                                              //     )
-                                              // );
+                                              showDialog(
+                                                context: context,
+                                                barrierDismissible: false,
+                                                builder: (BuildContext context) {
+                                                  return AlertDialog(
+                                                    shape: const RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                                                    actionsAlignment: MainAxisAlignment.spaceEvenly,
+                                                    title: const Text('Cambiar alimento', style: TextStyle(color: primaryColor, fontSize: 15, fontWeight: FontWeight.bold)),
+                                                    content: const Text('¿Desea cambiar este alimento?', style: TextStyle(color: primaryColor, fontSize: 15)),
+                                                    actions: [
+                                                      TextButton(
+                                                        child: const Text('No', style: TextStyle(color: primaryColor),),
+                                                        onPressed: () {
+                                                          Navigator.of(context).pop();
+                                                        },
+                                                      ),
+                                                      TextButton(
+                                                        child: const Text('Si', style: TextStyle(color: secondaryColor),),
+                                                        onPressed: () {
+                                                          changed = true;
+                                                          Provider.of<MealPresenter>(context, listen: false).mealToReplace = currentMeal;
+                                                          Provider.of<MealPresenter>(context, listen: false).replaceAlternativeMeal(context).then((value){
+                                                            setState(() {
+                                                              Provider.of<MealPresenter>(context, listen: false).selectedMeal = value;
+                                                              currentMeal = value;
+                                                            });
+                                                          }).whenComplete(()=> Navigator.pop(context));
+                                                        },
+                                                      ),
+                                                    ],
+                                                  );
+                                                }
+                                              );
                                             },
                                             child: Container(
                                               margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),

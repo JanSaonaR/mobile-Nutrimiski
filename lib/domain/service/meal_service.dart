@@ -14,9 +14,43 @@ import '../../model/entitie/child.dart';
 import '../../model/entitie/user_session.dart';
 import '../../presenter/child_presenter.dart';
 
+extension StringCasingExtension on String {
+  String toCapitalized() => length > 0 ?'${this[0].toUpperCase()}${substring(1).toLowerCase()}':'';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ').split(' ').map((str) => str.toCapitalized()).join(' ');
+}
+
 class MealService {
 
   MealService();
+
+  Future<List<Meal>> getMealsByDayByChild(BuildContext context, String date, int childId) async {
+    final dio = Dio();
+
+    dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
+
+    var uri = baseUrl + mealEndpoint + getMealsByDayEndpoint;
+
+    var response = await dio.get(uri,
+        queryParameters: {
+          'childId': childId,
+          'date': date
+        }
+    );
+
+    if(response.statusCode == 200) {
+      List<Meal> mealList = [];
+
+      for(Map<String, dynamic> element in response.data["data"]) {
+        Meal meal = Meal.fromJson(element);
+
+        mealList.add(meal);
+      }
+
+      return mealList;
+    }
+
+    return [];
+  }
 
   Future<List<Meal>> getMealsByDay(BuildContext context, String date) async {
     final dio = Dio();
@@ -91,7 +125,7 @@ class MealService {
 
     AlternativeMealDto sendMealData = AlternativeMealDto(
       calories: meal.totalCalories,
-      schedule: meal.schedule
+      type: meal.schedule!.toCapitalized()
     );
 
     var uri = baseUrl + mealEndpoint + getAlternativeMealsEndpoint;
