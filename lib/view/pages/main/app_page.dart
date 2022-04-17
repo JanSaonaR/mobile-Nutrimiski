@@ -7,6 +7,7 @@ import 'package:mobile_nutrimiski/util/colors.dart';
 import 'package:mobile_nutrimiski/util/util.dart';
 import 'package:mobile_nutrimiski/view/pages/chat/chat_page.dart';
 import 'package:mobile_nutrimiski/view/pages/child/child_list_page.dart';
+import 'package:mobile_nutrimiski/view/pages/main/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
@@ -126,7 +127,7 @@ class _AppPageState extends State<AppPage> {
                     return IndexedStack(
                         index: bottomNavigationBarProvider.pageIndex,
                         children: const [
-                          Text('1 Padre'),
+                          HomePage(),
                           ChatPage(),
                           ChildListPage()
                         ]
