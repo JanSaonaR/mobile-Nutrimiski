@@ -4,6 +4,7 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChatUserPage extends StatefulWidget {
 
+
   const ChatUserPage({Key? key}) : super(key: key);
 
   @override
@@ -18,8 +19,6 @@ class _ChatUserPageState extends State<ChatUserPage>{
 
   @override
   void initState() {
-    // channel = widget.channel;
-    // channel.watch();
     super.initState();
   }
 
