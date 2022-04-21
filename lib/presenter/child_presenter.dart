@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mobile_nutrimiski/domain/service/child_service.dart';
 import 'package:mobile_nutrimiski/domain/service/parent_service.dart';
 import 'package:mobile_nutrimiski/model/entitie/category_ingredient.dart';
+import 'package:mobile_nutrimiski/model/entitie/nutritionist.dart';
 import 'package:provider/provider.dart';
 
 import '../model/entitie/child.dart';
@@ -18,22 +19,26 @@ class ChildPresenter extends ChangeNotifier {
 
   final List<CategoryIngredient> _preferences = [];
 
-  String _nutritionistDni = "";
+  late Nutritionist _nutritionist;
 
   bool _loader = false;
   bool childrenReady = false;
 
   String getNutritionistDni(){
-    return _nutritionistDni;
+    return _nutritionist.dni!;
+  }
+
+  Nutritionist getParentNutritionist(){
+    return _nutritionist;
   }
 
   setNutritionistDni(String dni){
-    _nutritionistDni = dni;
+    _nutritionist.dni = dni;
   }
 
   Future<void> getNutritionist() async {
     await _parentService.getActiveNutritionist().then((value){
-      _nutritionistDni = value;
+      _nutritionist = value;
     });
   }
 

@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:mobile_nutrimiski/model/entitie/nutritionist.dart';
 import 'package:mobile_nutrimiski/model/entitie/parent_child.dart';
 import 'package:mobile_nutrimiski/presenter/child_register_presenter.dart';
 import 'package:mobile_nutrimiski/util/connection_tags.dart';
@@ -140,7 +141,7 @@ class ParentService{
     return [];
   }
 
-  Future<String> getActiveNutritionist() async{
+  Future<Nutritionist> getActiveNutritionist() async{
     final dio = Dio();
     dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
 
@@ -149,9 +150,15 @@ class ParentService{
     var response = await dio.get(uri, queryParameters: {'parentId' : UserSession().getId()});
 
     if(response.statusCode == 200) {
-      return response.data["data"][0]["user"]["dni"];
+      return Nutritionist.fromNutritionist(
+          response.data["data"][0]["user"]["dni"],
+          response.data["data"][0]["user"]["firstName"],
+          response.data["data"][0]["user"]["lastName"],
+          response.data["data"][0]["collegiate"],
+          response.data["data"][0]["user"]["phone"],
+          response.data["data"][0]["user"]["email"]);
     }
-    return "";
+    return Nutritionist();
   }
 
 }
