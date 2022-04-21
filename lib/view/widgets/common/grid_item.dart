@@ -13,9 +13,12 @@ class GridItem extends StatefulWidget {
   State<GridItem> createState() => _GridItemState();
 }
 
-class _GridItemState extends State<GridItem> {
+class _GridItemState extends State<GridItem> with AutomaticKeepAliveClientMixin {
 
   bool isSelected = false;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
