@@ -31,6 +31,13 @@ class _HomePageState extends State<HomePage> {
 
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
 
 
@@ -61,9 +68,9 @@ class _HomePageState extends State<HomePage> {
                       aspectRatio: 16/9,
                       viewportFraction: 1,
                       initialPage: 0,
-                      enableInfiniteScroll: true,
+                      enableInfiniteScroll: false,
                       reverse: false,
-                      autoPlay: true,
+                      autoPlay: false,
                       autoPlayInterval: const Duration(seconds: 2),
                       autoPlayAnimationDuration: const Duration(milliseconds: 800),
                       autoPlayCurve: Curves.fastOutSlowIn,
