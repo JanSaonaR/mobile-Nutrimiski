@@ -55,26 +55,9 @@ class _RegisterChildPreferencesPageState extends State<RegisterChildPreferencesP
               //TITLE
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: ()=> Navigator.pop(context),
-                      child: const CircleAvatar(
-                        radius: 25,
-                        backgroundColor: primaryColor,
-                        child: Icon(Icons.arrow_back, color: Colors.white, size: 30,),
-                      ),
-                    ),
-                    const Expanded(
-                        child: Center(
-                          child: Text('LOGO', style: TextStyle(color: secondaryColor,
-                              fontSize: 30, fontWeight: FontWeight.bold)),
-                        )
-                    ),
-                    const SizedBox(width: 30)
-                  ],
-                ),
+                child: Center(
+                  child: Image.asset('assets/images/logo.png', scale: 5,),
+                )
               ),
               const SizedBox(height: 25.0),
               const Text(

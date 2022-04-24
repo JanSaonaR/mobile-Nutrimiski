@@ -11,7 +11,7 @@ class Child {
   final double? weight;
   final String? sex;
   final String? birthDate;
-  final double? imc;
+  double? imc;
   final int? age;
   final ParentChild? parent;
 

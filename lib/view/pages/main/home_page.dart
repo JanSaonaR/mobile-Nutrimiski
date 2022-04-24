@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -51,9 +52,9 @@ class _HomePageState extends State<HomePage> {
         children: [
           //DIA DE LA SEMANA
           Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 5)))), style: const TextStyle(color: primaryColor,
-              fontSize: 24.0)),
+              fontSize: 24.0, fontWeight: FontWeight.bold)),
           Text(DateFormat.yMMMd('es_ES').format(DateTime.now()).replaceAll(".", ","), style: const TextStyle(color: primaryColor,
-              fontSize: 15.0)),
+              fontSize: 15.0, fontWeight: FontWeight.bold)),
           const SizedBox(height: 15.0),
           FutureBuilder(
             future: Provider.of<ChildPresenter>(context, listen: false).getChildren(),
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                 return CarouselSlider.builder(
                     itemCount: children.length,
                     options: CarouselOptions(
-                      height: screenSize.height * 0.65,
+                      height: screenSize.height * 0.7,
                       aspectRatio: 16/9,
                       viewportFraction: 1,
                       initialPage: 0,
@@ -105,8 +106,8 @@ class _HomePageState extends State<HomePage> {
                                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                                       child: Row(
                                         children: [
-                                          const Text('Comidas de ', style: TextStyle(fontSize: 20.0, color: primaryColor)),
-                                          Text('${children[itemIndex].firstName}', style: const TextStyle(fontSize: 20.0, color: secondaryColor)),
+                                          const Text('Comidas de ', style: TextStyle(fontSize: 15.0, color: primaryColor)),
+                                          Text('${children[itemIndex].firstName}', style: const TextStyle(fontSize: 18.0, color: secondaryColor, fontWeight: FontWeight.bold)),
                                         ],
                                       ),
                                     ),
@@ -114,15 +115,15 @@ class _HomePageState extends State<HomePage> {
                                         height: screenSize.height * 0.31,
                                         width: screenSize.width,
                                         margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 2.5),
-                                        padding: const EdgeInsets.all(16.0),
+                                        padding: const EdgeInsets.all(20.0),
                                         decoration: BoxDecoration(
                                             color: Colors.white,
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.black.withOpacity(0.1),
+                                                color: Colors.black.withOpacity(0.05),
                                                 spreadRadius: 1,
-                                                blurRadius: 1,
-                                                offset: const Offset(0, 4),
+                                                blurRadius: 8,
+                                                offset: const Offset(2, 8),
                                               )
                                             ],
                                             borderRadius: const BorderRadius.all(Radius.circular(25))
@@ -132,15 +133,17 @@ class _HomePageState extends State<HomePage> {
                                           children: [
                                             Text(meals[0].schedule!, style: const TextStyle(fontSize: 20.0, color: primaryColor)),
                                             const SizedBox(height: 8.0),
-                                            Text(meals[0].name!, style: const TextStyle(fontSize: 12.0, color: primaryColor)),
+                                            SizedBox(
+                                                width: screenSize.width * 0.5,
+                                                child: Text(meals[0].name!, style: const TextStyle(fontSize: 14.0, color: primaryColor, fontWeight: FontWeight.bold))),
                                             Expanded(
                                               child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 crossAxisAlignment: CrossAxisAlignment.end,
                                                 children: [
-                                                  Text('${meals[0].totalCalories} kcal', style: const TextStyle(fontSize: 20.0, color: primaryColor)),
-                                                  const CircleAvatar(
-                                                    radius: 55,
+                                                  Text('${meals[0].totalCalories} kcal', style: const TextStyle(fontSize: 20.0, color: primaryColor, fontWeight: FontWeight.bold)),
+                                                  CircleAvatar(
+                                                    radius: screenSize.height * 0.1,
                                                     backgroundImage: AssetImage('assets/images/ramen.jpg'),
                                                   ),
                                                 ],
@@ -151,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     const Padding(
                                       padding: EdgeInsets.symmetric(vertical: 10.0),
-                                      child: Text('Próximas comidas', style: TextStyle(fontSize: 15.0, color: primaryColor)),
+                                      child: Text('Próximas comidas', style: TextStyle(fontSize: 15.0, color: primaryColor, fontWeight: FontWeight.bold)),
                                     ),
                                     Container(
                                       margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
@@ -160,10 +163,10 @@ class _HomePageState extends State<HomePage> {
                                           color: Colors.white,
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.black.withOpacity(0.1),
+                                              color: Colors.black.withOpacity(0.05),
                                               spreadRadius: 1,
-                                              blurRadius: 1,
-                                              offset: const Offset(0, 4),
+                                              blurRadius: 5,
+                                              offset: const Offset(2, 8),
                                             )
                                           ],
                                           borderRadius: const BorderRadius.all(Radius.circular(25))
@@ -180,9 +183,12 @@ class _HomePageState extends State<HomePage> {
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                Text(meals[1].name!, overflow: TextOverflow.ellipsis, maxLines: 1, softWrap: false, style: const TextStyle(color: Colors.grey, fontSize: 12.0)),
+                                                Text(meals[1].name!, overflow: TextOverflow.ellipsis, maxLines: 1, softWrap: false, style: const TextStyle(color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.bold)),
                                                 Text('${meals[1].totalCalories.toString()} kcal', style: const TextStyle(color: Colors.grey, fontSize: 12.0)),
-                                                Align(alignment: Alignment.bottomRight, child: Text(meals[1].schedule!, style: const TextStyle(fontSize: 14.0)))
+                                                SizedBox(
+                                                  height: screenSize.height * 0.009,
+                                                ),
+                                                Align(alignment: Alignment.bottomRight, child: Text(meals[1].schedule!, style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold)))
                                               ],
                                             ),
                                           )
@@ -196,10 +202,10 @@ class _HomePageState extends State<HomePage> {
                                           color: Colors.white,
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.black.withOpacity(0.1),
+                                              color: Colors.black.withOpacity(0.05),
                                               spreadRadius: 1,
-                                              blurRadius: 1,
-                                              offset: const Offset(0, 4),
+                                              blurRadius: 5,
+                                              offset: const Offset(2, 8),
                                             )
                                           ],
                                           borderRadius: const BorderRadius.all(Radius.circular(25))
@@ -216,9 +222,12 @@ class _HomePageState extends State<HomePage> {
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                Text(meals[2].name!, overflow: TextOverflow.ellipsis, maxLines: 1, softWrap: false, style: const TextStyle(color: Colors.grey, fontSize: 12.0)),
+                                                Text(meals[2].name!, overflow: TextOverflow.ellipsis, maxLines: 1, softWrap: false, style: const TextStyle(color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.bold)),
                                                 Text('${meals[2].totalCalories.toString()} kcal', style: const TextStyle(color: Colors.grey, fontSize: 12.0)),
-                                                Align(alignment: Alignment.bottomRight, child: Text(meals[2].schedule!, style: const TextStyle(fontSize: 14.0)))
+                                                SizedBox(
+                                                  height: screenSize.height * 0.009,
+                                                ),
+                                                Align(alignment: Alignment.bottomRight, child: Text(meals[2].schedule!, style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold)))
                                               ],
                                             ),
                                           )

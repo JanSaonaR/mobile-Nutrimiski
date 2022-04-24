@@ -78,8 +78,8 @@ class _ChildRegisterFormPageState extends State<ChildRegisterFormPage> {
                   width: screenSize.width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('LOGO', style: TextStyle(color: secondaryColor, fontSize: 30, fontWeight: FontWeight.bold),)
+                    children: [
+                      Image.asset('assets/images/logo.png', scale: 5,),
                     ],
                   ),
                 ),

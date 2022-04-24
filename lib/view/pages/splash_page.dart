@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: const Text('LOGO', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
+      splash: Image.asset('assets/images/logo_white.png'),
       splashIconSize: 150,
       duration: 3000,
       splashTransition: SplashTransition.fadeTransition,

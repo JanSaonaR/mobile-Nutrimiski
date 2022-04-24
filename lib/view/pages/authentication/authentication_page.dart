@@ -65,9 +65,9 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  const Positioned(
+                  Positioned(
                     top: 75,
-                    child: Text('LOGO', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+                    child: Image.asset('assets/images/logo_white.png', scale: 3,),
                   ),
                   Positioned(
                     top: 300, left: 20, right: 20, bottom: 100,

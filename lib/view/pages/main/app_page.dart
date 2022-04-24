@@ -10,7 +10,9 @@ import 'package:mobile_nutrimiski/view/pages/child/child_list_page.dart';
 import 'package:mobile_nutrimiski/view/pages/main/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+import '../../../domain/local/notification_service.dart';
 import '../../../model/entitie/user_session.dart';
 import '../../../presenter/category_presenter.dart';
 import '../../../provider/bottom_navigation_bar_provider.dart';
@@ -30,6 +32,8 @@ class AppPage extends StatefulWidget {
 class _AppPageState extends State<AppPage> {
 
   late var _future;
+
+  listenNotifications() => NotificationService.onNotifications.stream.listen((event) { });
 
   Future<void> initUser() async {
     var client = StreamChat.of(context).client;
@@ -65,6 +69,21 @@ class _AppPageState extends State<AppPage> {
         });
       });
     }
+
+
+    NotificationService.init().whenComplete((){
+      listenNotifications();
+
+      if(isParent()){
+        NotificationService.showBreakfastScheduledNotification(title: 'Hora de desayunar!', body: 'La comida más importante del día es el desayuno.', time: Time(7, 30, 0));
+        NotificationService.showLunchScheduledNotification(title: 'Hora de almorzar!', body: 'Un almuerzo balanceado ayudará al desarrollo de sus hijos.', time: Time(13, 0, 0));
+        NotificationService.showDinnerScheduledNotification(title: 'Hora de cenar!', body: 'Complemente bien la alimentación con una buena cena', time: Time(18, 0, 0));
+      }
+      else{
+        NotificationService.cancel();
+      }
+    });
+
     super.initState();
   }
 
@@ -100,14 +119,14 @@ class _AppPageState extends State<AppPage> {
               width: screenSize.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text('LOGO', style: TextStyle(color: secondaryColor, fontSize: 30, fontWeight: FontWeight.bold),)
+                children: [
+                  Image.asset('assets/images/logo.png', scale: 5,),
                 ],
               ),
             ),
           ),
           Positioned(
-            top: 50, left: 25,
+            top: 60, left: 25,
             child: InkWell(
               onTap: () { _scaffoldKey.currentState!.openDrawer(); },
               child: const CircleAvatar(
@@ -118,7 +137,7 @@ class _AppPageState extends State<AppPage> {
             ),
           ),
           Positioned(
-            top: 140, bottom: 90, right: 25, left: 25,
+            top: 140, right: 25, left: 25,
             child: FutureBuilder(
               future: _future,
               builder: (context, snapshot) {

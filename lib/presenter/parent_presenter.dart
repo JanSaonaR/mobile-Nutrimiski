@@ -35,14 +35,14 @@ class ParentPresenter extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> getParents() async{
+  Future<void> getParents() async{
     await _nutritionistService.getParentsByNutritionist().then((value){
       parents = value;
       if(parents.isNotEmpty){
         parentsReady = true;
+        notifyListeners();
       }
     });
-    return parentsReady;
   }
 
   Future<List<Child>> getChildrenFromParentId(BuildContext context) async {

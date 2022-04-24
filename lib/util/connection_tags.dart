@@ -39,6 +39,8 @@ const String childPreferencesSave = "/save";
 
 const String childPreferencesDelete = "/delete";
 
+const String childGetHistory = "/historial";
+
 //----------- MEAL -----------//
 
 const String mealEndpoint = "meal/";

@@ -11,7 +11,8 @@ import '../../../util/colors.dart';
 class ChildListItemView extends StatefulWidget {
 
   final Child child;
-  const ChildListItemView({Key? key, required this.child}) : super(key: key);
+  final int index;
+  const ChildListItemView({Key? key, required this.child, required this.index}) : super(key: key);
 
   @override
   _ChildListItemViewState createState() => _ChildListItemViewState();
@@ -24,6 +25,8 @@ class _ChildListItemViewState extends State<ChildListItemView> {
       onTap: (){
         //dejo un niño seleccionado para evitar pasar el mismo child como parámetro
         Provider.of<ChildPresenter>(context, listen: false).selectedChild = widget.child;
+        Provider.of<ChildPresenter>(context, listen: false).selectedIndex = widget.index;
+        Provider.of<ChildPresenter>(context, listen: false).getChildHistory();
         Navigator.push(
             context,
             PageTransition(

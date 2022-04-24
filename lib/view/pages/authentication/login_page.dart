@@ -69,8 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(height: screenSize.height/50),
-                        const Text('LOGO', style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
-                        SizedBox(height: screenSize.height * 0.15),
+                        Image.asset('assets/images/logo_white.png', scale: 4,),
+                        SizedBox(height: screenSize.height * 0.01),
+                        const Text('NUTRIMISKI', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                        SizedBox(height: screenSize.height * 0.1),
                         Visibility(
                           visible: Provider.of<UserPresenter>(context).getShowMessageError(),
                           child: Text(Provider.of<UserPresenter>(context).getMessageError(),style: TextStyle(color: Colors.red, fontSize: 12),),

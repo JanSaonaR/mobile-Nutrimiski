@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_nutrimiski/presenter/child_presenter.dart';
+import 'package:provider/provider.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChatNutritionistPage extends StatefulWidget {
@@ -40,7 +42,9 @@ class _ChatNutritionistPageState extends State<ChatNutritionistPage>{
     return StreamChannel(
       channel: channel,
       child: Scaffold(
-        appBar: ChannelHeader(),
+        appBar: ChannelHeader(
+          title: Text(Provider.of<ChildPresenter>(context, listen: false).getParentNutritionist().firstName!),
+        ),
         body: Column(
           children: [
             Expanded(

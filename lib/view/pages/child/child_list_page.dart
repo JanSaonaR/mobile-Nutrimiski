@@ -22,9 +22,10 @@ class _ChildListPageState extends State<ChildListPage> {
   @override
   Widget build(BuildContext context) {
 
-    final children = Provider.of<ChildPresenter>(context, listen: false).children;
+    final children = Provider.of<ChildPresenter>(context).children;
 
     final screenSize = MediaQuery.of(context).size;
+
 
     return SizedBox(
       height: screenSize.height,
@@ -44,13 +45,13 @@ class _ChildListPageState extends State<ChildListPage> {
 
                       Child child = children[index];
 
-                      return ChildListItemView(child: child,);
+                      return ChildListItemView(child: child, index: index);
                     },
                   ),
                 ) : const Center(child: Text('Ups!, parece ser que no tienes hijos registrados', style: TextStyle(color: Colors.grey, fontSize: 12))),
                 Positioned(
-                  bottom: 0,
-                  right: 0,
+                  top: screenSize.height * 0.65,
+                  right: 10,
                   child: FloatingActionButton(
                       child: const Center(
                         child: Icon(

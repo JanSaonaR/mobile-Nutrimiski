@@ -28,7 +28,7 @@ class _ParentListPageState extends State<ParentListPage> {
 
     final screenSize = MediaQuery.of(context).size;
 
-    return SizedBox(
+    return Provider.of<ParentPresenter>(context).parentsReady ? SizedBox(
       height: screenSize.height,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,6 +55,6 @@ class _ParentListPageState extends State<ParentListPage> {
           )
         ],
       ),
-    );
+    ) : const Center(child: CupertinoActivityIndicator());
   }
 }

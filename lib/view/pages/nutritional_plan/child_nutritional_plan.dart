@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_nutrimiski/view/pages/nutritional_plan/selected_meal_details.dart';
@@ -57,9 +58,8 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                 margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                 child: Column(
                   children: [
-                    const Center(
-                      child: Text('LOGO', style: TextStyle(color: secondaryColor,
-                        fontSize: 30, fontWeight: FontWeight.bold)),
+                    Center(
+                      child: Image.asset('assets/images/logo.png', scale: 5,),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,166 +73,169 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                           ),
                         ),
                         const Text('Plan nutricional', style: TextStyle(color: primaryColor,
-                          fontSize: 20.0)),
+                          fontSize: 20.0, fontWeight: FontWeight.bold)),
                       ],
                     )
                   ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  //TODAY
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            selected = int.parse(DateFormat('d').format(DateTime.now()));
-                            selectedDate = DateTime.now().toString().substring(0,10);
-                          });
-                        },
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now())) ? primaryColor : Colors.white,
-                          child: Text(DateFormat('d').format(DateTime.now()),
-                            style: TextStyle(color:
-                              selected == int.parse(DateFormat('d').format(DateTime.now())) ? Colors.white : primaryColor,
-                            )
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 3.0),
-                      Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now()).substring(0,3)), style: const TextStyle(color: primaryColor,
-                        fontSize: 13.0))
-                    ],
-                  ),
-                  //+1
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 1))));
-                            selectedDate = DateTime.now().add(const Duration(days: 1)).toString().substring(0,10);
-                          });
-                        },
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 1)))) ? primaryColor : Colors.white,
-                          child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 1))),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    //TODAY
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              selected = int.parse(DateFormat('d').format(DateTime.now()));
+                              selectedDate = DateTime.now().toString().substring(0,10);
+                            });
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now())) ? primaryColor : Colors.white,
+                            child: Text(DateFormat('d').format(DateTime.now()),
                               style: TextStyle(color:
-                              selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 1)))) ? Colors.white : primaryColor,
-                            )
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 3.0),
-                      Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 1))).substring(0,3)), style: const TextStyle(color: primaryColor,
-                          fontSize: 13.0))
-                    ],
-                  ),
-                  //+2
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 2))));
-                            selectedDate = DateTime.now().add(const Duration(days: 2)).toString().substring(0,10);
-                          });
-                        },
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 2)))) ? primaryColor : Colors.white,
-                          child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 2))),
-                              style: TextStyle(color:
-                              selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 2)))) ? Colors.white : primaryColor,
-                            )
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 3.0),
-                      Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 2))).substring(0,3)), style: const TextStyle(color: primaryColor,
-                          fontSize: 13.0))
-                    ],
-                  ),
-                  //+3
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 3))));
-                            selectedDate = DateTime.now().add(const Duration(days: 3)).toString().substring(0,10);
-                          });
-                        },
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: selected == int.parse( DateTime.now().add(const Duration(days: 3)).toString().substring(8,10)) ? primaryColor : Colors.white,
-                          child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 3))),
-                              style: TextStyle(color:
-                              selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 3)))) ? Colors.white : primaryColor,
+                                selected == int.parse(DateFormat('d').format(DateTime.now())) ? Colors.white : primaryColor,
                               )
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 3.0),
-                      Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 3))).substring(0,3)), style: const TextStyle(color: primaryColor,
-                          fontSize: 13.0))
-                    ],
-                  ),
-                  //+4
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 4))));
-                            selectedDate = DateTime.now().add(const Duration(days: 4)).toString().substring(0,10);
-                          });
-                        },
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 4)))) ? primaryColor : Colors.white,
-                          child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 4))),
-                              style: TextStyle(color:
-                              selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 4)))) ? Colors.white : primaryColor,
+                        const SizedBox(height: 3.0),
+                        Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now()).substring(0,3)), style: const TextStyle(color: primaryColor,
+                          fontSize: 12.0))
+                      ],
+                    ),
+                    //+1
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 1))));
+                              selectedDate = DateTime.now().add(const Duration(days: 1)).toString().substring(0,10);
+                            });
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 1)))) ? primaryColor : Colors.white,
+                            child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 1))),
+                                style: TextStyle(color:
+                                selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 1)))) ? Colors.white : primaryColor,
                               )
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 3.0),
-                      Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 4))).substring(0,3)), style: const TextStyle(color: primaryColor,
-                          fontSize: 13.0))
-                    ],
-                  ),
-                  //+5
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 5))));
-                            selectedDate = DateTime.now().add(const Duration(days: 5)).toString().substring(0,10);
-                          });
-                        },
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 5)))) ? primaryColor : Colors.white,
-                          child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 5))),
-                              style: TextStyle(color:
-                              selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 5)))) ? Colors.white : primaryColor,
+                        const SizedBox(height: 3.0),
+                        Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 1))).substring(0,3)), style: const TextStyle(color: primaryColor,
+                            fontSize: 12.0))
+                      ],
+                    ),
+                    //+2
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 2))));
+                              selectedDate = DateTime.now().add(const Duration(days: 2)).toString().substring(0,10);
+                            });
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 2)))) ? primaryColor : Colors.white,
+                            child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 2))),
+                                style: TextStyle(color:
+                                selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 2)))) ? Colors.white : primaryColor,
                               )
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 3.0),
-                      Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 5))).substring(0,3)), style: const TextStyle(color: primaryColor,
-                          fontSize: 13.0))
-                    ],
-                  )
-                ],
+                        const SizedBox(height: 3.0),
+                        Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 2))).substring(0,3)), style: const TextStyle(color: primaryColor,
+                            fontSize: 12.0))
+                      ],
+                    ),
+                    //+3
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 3))));
+                              selectedDate = DateTime.now().add(const Duration(days: 3)).toString().substring(0,10);
+                            });
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            backgroundColor: selected == int.parse( DateTime.now().add(const Duration(days: 3)).toString().substring(8,10)) ? primaryColor : Colors.white,
+                            child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 3))),
+                                style: TextStyle(color:
+                                selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 3)))) ? Colors.white : primaryColor,
+                                )
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 3.0),
+                        Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 3))).substring(0,3)), style: const TextStyle(color: primaryColor,
+                            fontSize: 12.0))
+                      ],
+                    ),
+                    //+4
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 4))));
+                              selectedDate = DateTime.now().add(const Duration(days: 4)).toString().substring(0,10);
+                            });
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 4)))) ? primaryColor : Colors.white,
+                            child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 4))),
+                                style: TextStyle(color:
+                                selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 4)))) ? Colors.white : primaryColor,
+                                )
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 3.0),
+                        Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 4))).substring(0,3)), style: const TextStyle(color: primaryColor,
+                            fontSize: 12.0))
+                      ],
+                    ),
+                    //+5
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              selected = int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 5))));
+                              selectedDate = DateTime.now().add(const Duration(days: 5)).toString().substring(0,10);
+                            });
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            backgroundColor: selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 5)))) ? primaryColor : Colors.white,
+                            child: Text(DateFormat('d').format(DateTime.now().add(const Duration(days: 5))),
+                                style: TextStyle(color:
+                                selected == int.parse(DateFormat('d').format(DateTime.now().add(const Duration(days: 5)))) ? Colors.white : primaryColor,
+                                )
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 3.0),
+                        Text(dayOfWeek(DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 5))).substring(0,3)), style: const TextStyle(color: primaryColor,
+                            fontSize: 12.0))
+                      ],
+                    )
+                  ],
+                ),
               ),
               const SizedBox(height: 15.0),
               Expanded(
@@ -269,15 +272,15 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-                                padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+                                padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
+                                        color: Colors.black.withOpacity(0.05),
                                         spreadRadius: 1,
-                                        blurRadius: 1,
-                                        offset: const Offset(0, 4),
+                                        blurRadius: 5,
+                                        offset: const Offset(5, 10),
                                       )
                                     ],
                                     borderRadius: const BorderRadius.all(Radius.circular(25))
@@ -286,7 +289,7 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     const CircleAvatar(
-                                      radius: 55,
+                                      radius: 50,
                                       backgroundImage: AssetImage('assets/images/ramen.jpg'),
                                     ),
                                     const SizedBox(width: 15.0),
@@ -294,9 +297,12 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(currentMeal.name!, overflow: TextOverflow.ellipsis, maxLines: 1, softWrap: false, style: const TextStyle(color: Colors.grey),),
+                                          Text(currentMeal.name!, overflow: TextOverflow.ellipsis, maxLines: 1, softWrap: false, style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),),
                                           Text('${currentMeal.totalCalories.toString()} kcal', style: const TextStyle(color: Colors.grey),),
-                                          Align(alignment: Alignment.bottomRight, child: Text(currentMeal.schedule!))
+                                          SizedBox(
+                                            height: screenSize.height * 0.02,
+                                          ),
+                                          Align(alignment: Alignment.bottomRight, child: Text(currentMeal.schedule!, style: TextStyle(fontWeight: FontWeight.bold),))
                                         ],
                                       ),
                                     )
