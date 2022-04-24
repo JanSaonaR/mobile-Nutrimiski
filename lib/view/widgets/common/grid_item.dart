@@ -40,7 +40,14 @@ class _GridItemState extends State<GridItem> with AutomaticKeepAliveClientMixin 
           borderRadius: const BorderRadius.all(Radius.circular(15.0)),
         ),
         child: Center(
-          child: Text(widget.ingredient.name!, style: const TextStyle(fontSize: 11.5)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //Image.asset('assets/preferences_images/${widget.ingredient.name}.png', fit: BoxFit.contain, width: 25.0, height: 25.0,),
+              Image.asset('assets/preferences_images/steak.png', fit: BoxFit.contain, width: 45.0, height: 45.0,),
+              Text(widget.ingredient.name!, style: const TextStyle(fontSize: 11.5)),
+            ],
+          ),
         ),
       )
     );
