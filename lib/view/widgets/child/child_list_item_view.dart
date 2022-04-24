@@ -19,6 +19,46 @@ class ChildListItemView extends StatefulWidget {
 }
 
 class _ChildListItemViewState extends State<ChildListItemView> {
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25.0))),
+          actionsAlignment: MainAxisAlignment.spaceEvenly,
+          title: const Text('Eliminar', style: TextStyle(color: primaryColor, fontSize: 15, fontWeight: FontWeight.bold)),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('¿Seguro desea eliminar los datos de su hijo?', style: TextStyle(color: primaryColor, fontSize: 15)),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('No', style: TextStyle(color: primaryColor),),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Si', style: TextStyle(color: secondaryColor),),
+              onPressed: () {
+                Provider.of<ChildPresenter>(context, listen: false).deleteChild(widget.index, widget.child.childId!).whenComplete((){
+                  Navigator.of(context).pop();
+                });
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -59,9 +99,7 @@ class _ChildListItemViewState extends State<ChildListItemView> {
             secondaryActions: [
               IconSlideAction(
                 onTap: () async {
-                  Provider.of<ChildPresenter>(context, listen: false).deleteChild(context, widget.child.childId!).whenComplete((){
-                    setState((){});
-                  });
+                  _showMyDialog();
                 },
                 color: Colors.red,
                 icon: Icons.delete,

@@ -148,8 +148,11 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
                   _formKey.currentState!.save();
                   Provider.of<ChildPresenter>(context, listen: false).updateChild().then((value){
                     if(value){
+                      Provider.of<ChildPresenter>(context, listen: false).setHistoryReady(0);
                       Provider.of<ChildPresenter>(context, listen: false).localChildUpdate();
-                      Navigator.of(context).pop();
+                      Provider.of<ChildPresenter>(context, listen: false).getChildHistory().whenComplete((){
+                        Navigator.of(context).pop();
+                      });
                     }
                   });
                 }

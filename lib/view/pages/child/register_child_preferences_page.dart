@@ -131,14 +131,26 @@ class _RegisterChildPreferencesPageState extends State<RegisterChildPreferencesP
               ),
               const SizedBox(height: 20.0),
               Center(
-                child: Button(
+                child: Provider.of<ChildRegisterPresenter>(context).getLoader() ?
+                const SizedBox(
+                  width: 50,
+                  child: LinearProgressIndicator(color: Colors.white,),
+                ) :
+                Button(
                   press: () {
+                    Provider.of<ChildRegisterPresenter>(context, listen: false).setLoader(true);
                     Provider.of<ChildPresenter>(context, listen: false).saveRegisteredChildPreferences(context).whenComplete((){
                       Provider.of<NutritionalPlanPresenter>(context, listen: false).createNutritionalPlan(context).then((value){
                         if(value == true) {
-                          Navigator.pushReplacement(context, MaterialPageRoute(
-                            builder: (BuildContext context) => const AppPage(),
-                          ));
+                          Provider.of<ChildPresenter>(context, listen: false).updateLocalChildList(context).whenComplete((){
+                            Provider.of<ChildRegisterPresenter>(context, listen: false).setLoader(false);
+                            Navigator.pushReplacement(context, MaterialPageRoute(
+                              builder: (BuildContext context) => const AppPage(),
+                            ));
+                          });
+                        }
+                        else{
+                          Provider.of<ChildRegisterPresenter>(context, listen: false).setLoader(false);
                         }
                       });
 

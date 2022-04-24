@@ -128,15 +128,20 @@ class ChildPresenter extends ChangeNotifier {
     return childrenReady;
   }
 
-  Future<bool> deleteChild(BuildContext context, int childId) async {
+  Future<bool> deleteChild(int index, int childId) async {
 
-    await _childService.deleteChild(context, childId).whenComplete((){
-      Provider.of<ChildPresenter>(context, listen: false).children.removeWhere((child) => child.childId == childId);
+    await _childService.deleteChild(childId).then((value){
+      deleteLocalChild(index);
       return true;
     });
 
     return false;
 
+  }
+
+  deleteLocalChild(int index){
+    children.removeAt(index);
+    notifyListeners();
   }
 
   Future<bool> updateChild() async {
@@ -178,6 +183,13 @@ class ChildPresenter extends ChangeNotifier {
     });
 
     return controller;
+  }
+
+  Future<void> updateLocalChildList(BuildContext context) async{
+    await _parentService.getChildrenFromParent().then((value){
+      children = value;
+      notifyListeners();
+    });
   }
 
   Future<bool> updateChildPreferences(BuildContext context) async {

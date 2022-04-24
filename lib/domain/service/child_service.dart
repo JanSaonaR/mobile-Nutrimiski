@@ -58,7 +58,7 @@ class ChildService {
   }
 
 
-  Future<bool> deleteChild(BuildContext context, int childId) async {
+  Future<bool> deleteChild(int childId) async {
 
     final dio = Dio();
     dio.options.headers["authorization"] = "Bearer ${UserSession().getToken()}";
