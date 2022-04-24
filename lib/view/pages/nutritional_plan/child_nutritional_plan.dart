@@ -247,7 +247,7 @@ class _ChildNutritionalPlanPageState extends State<ChildNutritionalPlanPage> {
                       List<Meal> meals = Provider.of<MealPresenter>(context, listen: false).getMealsByDayList();
 
                       if(meals.isEmpty || meals == null) {
-                        return const Center(child: Text('No existen comidas agendadas para el día de hoy'));
+                        return const Center(child: Text('No existen comidas agendadas para este día'));
                       } else {
                         return ListView.builder(
                           itemCount: meals.length,
