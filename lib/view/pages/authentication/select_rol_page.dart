@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
+import 'package:provider/provider.dart';
 
+import '../../../presenter/register_presenter.dart';
 import '../../widgets/common/button.dart';
 
 class SelectRolPage extends StatefulWidget {
-  final VoidCallback goToRegisterForm;
-  const SelectRolPage({Key? key, required this.goToRegisterForm}) : super(key: key);
+  final VoidCallback goToUserRegisterForm;
+  const SelectRolPage({Key? key, required this.goToUserRegisterForm}) : super(key: key);
 
   @override
   _SelectRolPageState createState() => _SelectRolPageState();
@@ -14,23 +16,9 @@ class SelectRolPage extends StatefulWidget {
 
 class _SelectRolPageState extends State<SelectRolPage> {
 
-  final _formKey = GlobalKey<FormState>();
-
   late bool loader;
   bool isHiddenPassword = false;
 
-  void _saveForm(Function open) {
-    final isValid = _formKey.currentState!.validate();
-    if (isValid) {
-      _formKey.currentState!.save();
-
-    }
-  }
-
-  void _togglePassword() {
-    isHiddenPassword = !isHiddenPassword;
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +29,17 @@ class _SelectRolPageState extends State<SelectRolPage> {
         color: backgroundColor,
         child: Stack(
           children: [
-            const Positioned(
-              top: 20, left: 50,
-              child: Text('LOGO', style: TextStyle(color: secondaryColor, fontSize: 40, fontWeight: FontWeight.bold),),
+             Positioned(
+              top: 40,
+              child: SizedBox(
+                width: screenSize.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text('LOGO', style: TextStyle(color: secondaryColor, fontSize: 30, fontWeight: FontWeight.bold),)
+                  ],
+                ),
+              ),
             ),
             Positioned(
               top: 80, left: 25,
@@ -60,29 +56,27 @@ class _SelectRolPageState extends State<SelectRolPage> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 150, bottom: 50, left: 30, right: 30),
-              height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/background_image.jpg"),
+                  image: Provider.of<RegisterPresenter>(context).getImage(),
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(25.0)),
               ),
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 15.0),
+                padding: const EdgeInsets.only(top: 100.0, bottom: 50.0, left: 15.0, right: 15.0),
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(44, 53, 73, 0.95),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
-                height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: ListView(
+                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 100,
-                      backgroundImage: AssetImage('assets/images/background_image.jpg'),
+                      backgroundImage: Provider.of<RegisterPresenter>(context).getImage(),
                     ),
                     const SizedBox(height: 20.0),
                     const SizedBox(
@@ -93,14 +87,30 @@ class _SelectRolPageState extends State<SelectRolPage> {
                     SizedBox(height: screenSize.height/50),
                     Button(
                       text: "PADRE",
-                      color: secondaryColor,
-                      press: widget.goToRegisterForm,
+                      color: Provider.of<RegisterPresenter>(context).getRol() == 0 ? secondaryColor : unSelectedRol,
+                      press: (){
+                        Provider.of<RegisterPresenter>(context, listen: false).setDesireRol(0);
+                      },
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     Button(
                       text: "NUTRICIONISTA",
-                      color: secondaryColor,
-                      press: widget.goToRegisterForm,
+                      color: Provider.of<RegisterPresenter>(context).getRol() == 1 ? secondaryColor : unSelectedRol,
+                      press: (){
+                        Provider.of<RegisterPresenter>(context, listen: false).setDesireRol(1);
+                      },
+                    ),
+                    const SizedBox(height: 50),
+                    InkWell(
+                      onTap: widget.goToUserRegisterForm,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text('Continuar', style: TextStyle(color: Colors.white),),
+                          SizedBox(width: 5,),
+                          Icon(Icons.arrow_forward_ios, color: Colors.white, size: 12,)
+                        ],
+                      ),
                     )
                   ],
                 ),

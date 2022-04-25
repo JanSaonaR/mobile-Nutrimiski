@@ -1,16 +1,16 @@
-class ParentRegisterDTO{
-  final String firstName;
-  final String lastName;
-  final String dni;
-  final String email;
-  final String password;
-  final String birthDate;
-  final String phone;
-  final String sex;
+class ParentRegisterDto{
+  String firstName;
+  String lastName;
+  String dni;
+  String email;
+  String password;
+  String birthDate;
+  String phone;
+  String sex;
 
-  ParentRegisterDTO(this.firstName, this.lastName, this.dni, this.email, this.password, this.birthDate, this.phone, this.sex);
+  ParentRegisterDto(this.firstName, this.lastName, this.dni, this.email, this.password, this.birthDate, this.phone, this.sex);
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
     'firstName': firstName,
     'lastName': lastName,
     'dni' : dni,

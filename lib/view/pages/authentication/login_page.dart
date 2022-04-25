@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_nutrimiski/presenter/user_presenter.dart';
 import 'package:mobile_nutrimiski/util/colors.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 import '../../../model/dto/user_login_dto.dart';
 import '../../widgets/common/button.dart';
+import '../main/app_page.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback goBack;
@@ -20,15 +24,8 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   late bool loader;
-  bool isHiddenPassword = false;
+  bool isHiddenPassword = true;
 
-  void _saveForm(Function open) {
-    final isValid = _formKey.currentState!.validate();
-    if (isValid) {
-      _formKey.currentState!.save();
-
-    }
-  }
 
   void _togglePassword() {
     isHiddenPassword = !isHiddenPassword;
@@ -73,7 +70,12 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         SizedBox(height: screenSize.height/50),
                         const Text('LOGO', style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
-                        SizedBox(height: screenSize.height/5),
+                        SizedBox(height: screenSize.height * 0.15),
+                        Visibility(
+                          visible: Provider.of<UserPresenter>(context).getShowMessageError(),
+                          child: Text(Provider.of<UserPresenter>(context).getMessageError(),style: TextStyle(color: Colors.red, fontSize: 12),),
+                        ),
+                        SizedBox(height: screenSize.height * 0.01),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: const BoxDecoration(
@@ -104,9 +106,9 @@ class _LoginPageState extends State<LoginPage> {
                               if (value!.isEmpty) {
                                 return "Ingrese un correo";
                               }
-                              // if (!value.contains("@")) {
-                              //   return "Ingrese un correo valido";
-                              // }
+                              if (!value.contains("@") || !value.contains(".com")) {
+                                return "Ingrese un correo valido";
+                              }
                             },
                             onSaved: (value) {
                               _toSend = UserLoginDto(value!, _toSend.password);
@@ -150,16 +152,47 @@ class _LoginPageState extends State<LoginPage> {
                               if (value!.isEmpty) {
                                 return "Ingrese una contraseña";
                               }
+                              if (value.length > 16 || value.length < 8) {
+                                return "Debe tener entre 8 a 16 caracteres";
+                              }
                             },
                           ),
                         ),
                         SizedBox(height: screenSize.height/20),
                         const Text('Olvidé mi contraseña', style: TextStyle(color: specialTextColor, fontSize: 12),),
                         SizedBox(height: screenSize.height/20),
-                        Button(
+                        Provider.of<UserPresenter>(context).getLoader() ?
+                        const SizedBox(
+                          width: 50,
+                          child: LinearProgressIndicator(color: Colors.white,),
+                        ): Button(
                           text: "INICIAR SESIÓN",
                           color: secondaryColor,
-                          press: () {},
+                          press: () {
+                            bool validated = _formKey.currentState!.validate();
+                            if(validated){
+                              Provider.of<UserPresenter>(context, listen: false).setLoader(true);
+                              _formKey.currentState!.save();
+                              Provider.of<UserPresenter>(context, listen: false).loginUser(_toSend).then((value){
+                                if(value == 0){
+                                  Navigator.pushReplacement(
+                                      context,
+                                      PageTransition(
+                                          duration: const Duration(milliseconds: 200),
+                                          reverseDuration: const Duration(milliseconds: 200),
+                                          type: PageTransitionType.rightToLeft,
+                                          child: const AppPage()
+                                      )
+                                  );
+                                  Provider.of<UserPresenter>(context, listen: false).setLoader(false);
+                                }
+                                else{
+                                  Provider.of<UserPresenter>(context, listen: false).setLoader(false);
+                                  Provider.of<UserPresenter>(context, listen: false).setMessageError(value);
+                                }
+                              });
+                            }
+                          },
                         )
                       ],
                     ),
